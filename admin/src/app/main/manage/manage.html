@@ -1,0 +1,59 @@
+<section class="scheduling">
+  <!-- HEADER-->
+  <div class="header md-accent-bg layout-align-space-between-stretch layout-row" layout="row" layout-align="space-between">
+    <div layout="column" layout-align="center start" class="layout-align-center-start layout-column">
+      <div class="title ng-binding">
+        <h1>
+          Schedule / Manage your routine.
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div layout="row">
+    <div flex = '5'>
+    </div>
+    <div flex = '20'>
+      <md-list>
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text">
+            <h2>Enrolled Courses / activites</h2>
+          </div>
+        </md-list-item>
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text"><h3>Schooling</h3><p>Course</p></div>
+        </md-list-item>
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text"><h3>Schooling</h3><p>Activity</p></div>
+        </md-list-item>
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text"><h3>Schooling</h3><p>Course</p></div>
+        </md-list-item>
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text"><h3>Schooling</h3><p>Activity</p></div>
+        </md-list-item>
+      </md-list>
+    </div>
+    <div flex = '75' style="height: 550px;">
+      <calendar-md flex layout layout-fill
+        calendar-direction="direction"
+        on-prev-month="prevMonth"
+        on-next-month="nextMonth"
+        on-day-click="dayClick"
+        title-format="'MMMM y'"
+        ng-model='selectedDate'
+        week-starts-on="firstDayOfWeek"
+        data-start-month="8"
+        data-start-year="2014"
+        tooltips="tooltips"
+        day-format="dayFormat"
+        day-label-format="'EEE'"
+        day-label-tooltip-format="'EEEE'"
+        day-tooltip-format="'fullDate'"
+        day-content="setDayContent"
+        disable-future-selection="false">
+      </calendar-md>
+    </div>
+  </div>
+</section>
