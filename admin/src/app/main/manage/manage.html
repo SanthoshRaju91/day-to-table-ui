@@ -12,9 +12,9 @@
 
   <!-- CONTENT -->
   <div layout="row">
-    <div flex = '5'>
+    <div flex='5'>
     </div>
-    <div flex = '20'>
+    <div flex='20'>
       <md-toolbar layout="row" class="md-hue-3">
         <div class="md-toolbar-tools toolbar-header">
           <span>Enrolled Courses & Activities</span>
@@ -37,24 +37,9 @@
     </div>
     <div flex="5">
     </div>
-    <div flex = '70' style="height: 550px;">
-      <calendar-md flex layout layout-fill
-        calendar-direction="direction"
-        on-prev-month="prevMonth"
-        on-next-month="nextMonth"
-        on-day-click="dayClick"
-        title-format="'MMMM y'"
-        ng-model='selectedDate'
-        week-starts-on="firstDayOfWeek"
-        data-start-month="8"
-        data-start-year="2014"
-        tooltips="tooltips"
-        day-format="dayFormat"
-        day-label-format="'EEE'"
-        day-label-tooltip-format="'EEEE'"
-        day-tooltip-format="'fullDate'"
-        day-content="setDayContent"
-        disable-future-selection="false">
+    <div flex='70' style="height: 550px;">
+      <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' week-starts-on="firstDayOfWeek" data-start-month="8" data-start-year="2014"
+          tooltips="tooltips" day-format="dayFormat" day-label-format="'EEE'" day-label-tooltip-format="'EEEE'" day-tooltip-format="'fullDate'" day-content="setDayContent" disable-future-selection="false">
       </calendar-md>
     </div>
   </div>

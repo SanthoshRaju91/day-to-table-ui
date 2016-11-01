@@ -21,7 +21,7 @@
         <ms-vertical-stepper-step ng-form="step1" step="1" step-title="'Name of the Activity'">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Activity Name</label>
-            <input ng-model="vm.activity.activitName">
+            <input ng-model="vm.activity.activityName">
           </md-input-container>
         </ms-vertical-stepper-step>
         <!-- / Activity Name -->
@@ -30,19 +30,29 @@
         <ms-vertical-stepper-step ng-form="step2" step="2" step-title="'Its Description'">
           <md-input-container class="md-block">
             <label>Description</label>
-            <textarea ng-model="vm.activity.description" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+            <textarea ng-model="vm.activity.description" md-maxlength="350" rows="5" md-select-on-focus></textarea>
           </md-input-container>
         </ms-vertical-stepper-step>
         <!-- / Description -->
 
         <!-- Event Date -->
         <ms-vertical-stepper-step ng-form="step3" step="3" step-title="'Schedule its Date'">
-          <md-datepicker ng-model="vm.activity.date" md-placeholder="Enter date"></md-datepicker>
+          <md-datepicker ng-model="vm.activity.date" md-min-date="vm.minDate" md-placeholder="Enter date"></md-datepicker>
         </ms-vertical-stepper-step>
         <!-- / Event Date -->
 
+        <!-- Category -->
+        <ms-vertical-stepper-step ng-form="step4" step="4" step-title="'Choose Category'">
+          <md-select ng-model="vm.activity.category">
+            <md-option><em>Select Option</em></md-option>
+            <md-option ng-repeat="item in vm.categories" ng-value="item.id">
+              {{item.label}}
+            </md-option>
+          </md-select>
+        </ms-vertical-stepper-step>
+        <!-- /Category -->
         <!-- Address -->
-        <ms-vertical-stepper-step ng-form="step4" step="4" step-title="'Address'">
+        <ms-vertical-stepper-step ng-form="step5" step="5" step-title="'Address'">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Address</label>
             <input ng-model="vm.activity.address">
@@ -51,19 +61,16 @@
         <!-- / Address-->
 
         <!-- Price -->
-        <ms-vertical-stepper-step ng-form="step5" step="5" step-title="'Its Price'">
+        <ms-vertical-stepper-step ng-form="step6" step="6" step-title="'Its Price'">
           <md-input-container class="md-block">
             <label>Price (HK USD)</label>
-            <input type="number" step="any" name="rate" ng-model="vm.activity.price" min="0"
-                   max="4999" />
+            <input type="number" step="any" name="rate" ng-model="vm.activity.price" min="0" max="4999" />
             <div ng-messages="activity.price.$error" multiple md-auto-hide="false">
               <div ng-message="required">
-                You've got to charge something! You can't just <b>give away</b> a Missile Defense
-                System.
+                You've got to charge something! You can't just <b>give away</b> a Missile Defense System.
               </div>
               <div ng-message="max">
-                {{activity.price.$viewValue | currency:"$":0}} an hour? That's a little ridiculous. I
-                doubt even Bill Clinton could afford that.
+                {{activity.price.$viewValue | currency:"$":0}} an hour? That's a little ridiculous. I doubt even Bill Clinton could afford that.
               </div>
             </div>
           </md-input-container>
@@ -71,13 +78,13 @@
         <!-- / Price -->
 
         <!-- Amenities -->
-        <ms-vertical-stepper-step ng-form="step6" step="6" step-title="'What Amenities will you provide?'">
+        <ms-vertical-stepper-step ng-form="step7" step="7" step-title="'What Amenities will you provide?'">
           <md-chips ng-model="vm.amenities" placeholder="Add amenities" readonly="isReadOnly"></md-chips>
         </ms-vertical-stepper-step>
         <!-- / Amenities-->
 
         <!-- Parking -->
-        <ms-vertical-stepper-step ng-form="step7" step="7" step-title="'Parking'">
+        <ms-vertical-stepper-step ng-form="step8" step="8" step-title="'Parking'">
           <div flex-gt-sm="50">
             <md-checkbox ng-model="vm.activity.twoWheeler" aria-label="Checkbox 1">
               Two Wheeler
@@ -92,10 +99,37 @@
         <!-- / Parking-->
 
         <!-- Languages -->
-        <ms-vertical-stepper-step ng-form="step8" step="8" step-title="'Supported Languages'">
+        <ms-vertical-stepper-step ng-form="step9" step="9" step-title="'Supported Languages'">
           <md-chips ng-model="vm.languages" placeholder="Supported Languages" readonly="isReadOnly"></md-chips>
         </ms-vertical-stepper-step>
         <!-- / Languages -->
+
+        <!-- Banner -->
+        <ms-vertical-stepper-step ng-form="step10" step="10" step-title="'Add Image'">
+          <p>Currently we are supporting Google Image URL's, paste the desired image URL.</p>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Image URL</label>
+            <input ng-model="vm.activity.image">
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Banner -->
+
+        <ms-vertical-stepper-step ng-form="step11" step="11" step-title="'Add Additional Includes to make the activity more details'">
+          <md-list flex>
+            <md-subheader class="md-no-sticky">Includes.</md-subheader>
+            <md-list-item class="md-2-line" ng-repeat="list in vm.includes track by $index">
+              <p>{{list}}</p>
+            </md-list-item>
+          </md-list>
+
+          <form name="includes">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Add Includes</label>
+              <input ng-model="vm.include">
+            </md-input-container>
+            <md-button class="md-raised md-warn" ng-click="vm.addIncludes()">Add</md-button>
+          </form>
+        </ms-vertical-stepper-step>
       </form>
     </div>
   </div>
