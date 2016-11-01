@@ -15,27 +15,29 @@
     <div flex = '5'>
     </div>
     <div flex = '20'>
-      <md-list>
-        <md-list-item class="md-2-line">
+      <md-toolbar layout="row" class="md-hue-3">
+        <div class="md-toolbar-tools toolbar-header">
+          <span>Enrolled Courses & Activities</span>
+        </div>
+      </md-toolbar>
+      <md-list flex>
+        <md-subheader class="md-no-sticky">{{vm.enrolled.activitesCount}} activites & {{vm.enrolled.coursesCount}} courses.</md-subheader>
+        <md-list-item class="md-2-line" ng-click="null" ng-repeat="list in vm.enrolled.enrolledList">
           <div class="md-list-item-text">
-            <h2>Enrolled Courses / activites</h2>
+            <div style="float: left;">
+              <h3>{{list.name}}</h3>
+              <p>{{list.enrolled}}</p>
+            </div>
+            <div style="float:right;">
+              <md-button class="md-warn" ng-click="vm.add(list.id)">Add</md-button>
+            </div>
           </div>
-        </md-list-item>
-        <md-list-item class="md-2-line">
-          <div class="md-list-item-text"><h3>Schooling</h3><p>Course</p></div>
-        </md-list-item>
-        <md-list-item class="md-2-line">
-          <div class="md-list-item-text"><h3>Schooling</h3><p>Activity</p></div>
-        </md-list-item>
-        <md-list-item class="md-2-line">
-          <div class="md-list-item-text"><h3>Schooling</h3><p>Course</p></div>
-        </md-list-item>
-        <md-list-item class="md-2-line">
-          <div class="md-list-item-text"><h3>Schooling</h3><p>Activity</p></div>
         </md-list-item>
       </md-list>
     </div>
-    <div flex = '75' style="height: 550px;">
+    <div flex="5">
+    </div>
+    <div flex = '70' style="height: 550px;">
       <calendar-md flex layout layout-fill
         calendar-direction="direction"
         on-prev-month="prevMonth"

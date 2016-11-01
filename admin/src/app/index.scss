@@ -14,8 +14,6 @@
 
 section {
   .header {
-    text-transform: uppercase;
-    letter-spacing: 1px;
     background-image: url(http://fuse-angular-material.withinpixels.com/assets/images/backgrounds/header-bg.png);
     background-size: cover;
     height: 80px;
@@ -24,5 +22,19 @@ section {
     padding: 10px;
     padding-left: 20px;
     margin-bottom: 25px;
+    padding-bottom: 20px;
+
+    h1 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.toolbar-header {
+  span {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
   }
 }

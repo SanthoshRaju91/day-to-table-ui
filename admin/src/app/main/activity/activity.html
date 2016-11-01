@@ -6,9 +6,97 @@
         <h1>
           Create Activity / Event
         </h1>
+        <p>Please fill in the below form for creating an event / activity. Kindly note all the fields are required.</p>
       </div>
     </div>
   </div>
 
   <!-- CONTENT -->
+  <div layout="row">
+    <div flex="5">
+    </div>
+    <div flex>
+      <form name="activity" ms-vertical-stepper ng-submit="vm.submitActivity()" ng-model="vm.activity" novalidate>
+        <!-- Activity Name -->
+        <ms-vertical-stepper-step ng-form="step1" step="1" step-title="'Name of the Activity'">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Activity Name</label>
+            <input ng-model="vm.activity.activitName">
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Activity Name -->
+
+        <!-- Description -->
+        <ms-vertical-stepper-step ng-form="step2" step="2" step-title="'Its Description'">
+          <md-input-container class="md-block">
+            <label>Description</label>
+            <textarea ng-model="vm.activity.description" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Description -->
+
+        <!-- Event Date -->
+        <ms-vertical-stepper-step ng-form="step3" step="3" step-title="'Schedule its Date'">
+          <md-datepicker ng-model="vm.activity.date" md-placeholder="Enter date"></md-datepicker>
+        </ms-vertical-stepper-step>
+        <!-- / Event Date -->
+
+        <!-- Address -->
+        <ms-vertical-stepper-step ng-form="step4" step="4" step-title="'Address'">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Address</label>
+            <input ng-model="vm.activity.address">
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Address-->
+
+        <!-- Price -->
+        <ms-vertical-stepper-step ng-form="step5" step="5" step-title="'Its Price'">
+          <md-input-container class="md-block">
+            <label>Price (HK USD)</label>
+            <input type="number" step="any" name="rate" ng-model="vm.activity.price" min="0"
+                   max="4999" />
+            <div ng-messages="activity.price.$error" multiple md-auto-hide="false">
+              <div ng-message="required">
+                You've got to charge something! You can't just <b>give away</b> a Missile Defense
+                System.
+              </div>
+              <div ng-message="max">
+                {{activity.price.$viewValue | currency:"$":0}} an hour? That's a little ridiculous. I
+                doubt even Bill Clinton could afford that.
+              </div>
+            </div>
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Price -->
+
+        <!-- Amenities -->
+        <ms-vertical-stepper-step ng-form="step6" step="6" step-title="'What Amenities will you provide?'">
+          <md-chips ng-model="vm.amenities" placeholder="Add amenities" readonly="isReadOnly"></md-chips>
+        </ms-vertical-stepper-step>
+        <!-- / Amenities-->
+
+        <!-- Parking -->
+        <ms-vertical-stepper-step ng-form="step7" step="7" step-title="'Parking'">
+          <div flex-gt-sm="50">
+            <md-checkbox ng-model="vm.activity.twoWheeler" aria-label="Checkbox 1">
+              Two Wheeler
+            </md-checkbox>
+          </div>
+          <div flex-gt-sm="50">
+            <md-checkbox ng-model="vm.activity.fourWheeler" aria-label="Checkbox 2">
+              Four Wheeler
+            </md-checkbox>
+          </div>
+        </ms-vertical-stepper-step>
+        <!-- / Parking-->
+
+        <!-- Languages -->
+        <ms-vertical-stepper-step ng-form="step8" step="8" step-title="'Supported Languages'">
+          <md-chips ng-model="vm.languages" placeholder="Supported Languages" readonly="isReadOnly"></md-chips>
+        </ms-vertical-stepper-step>
+        <!-- / Languages -->
+      </form>
+    </div>
+  </div>
 </section>
