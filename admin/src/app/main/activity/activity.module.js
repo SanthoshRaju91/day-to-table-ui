@@ -19,9 +19,11 @@
                 }
             },
             resolve: {
-                ActivityData: function (msApi)
+                ActivityData: function (msApi, $q, AuthService)
                 {
-
+                  if(!AuthService.authenticatedRoutes().includes('app.activity')) {                    
+                    return $q.reject('Not Authorized');
+                  }
                 }
             }
         });

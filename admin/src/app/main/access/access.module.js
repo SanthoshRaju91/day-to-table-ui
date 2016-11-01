@@ -7,6 +7,7 @@
 
     /** @ngInject */
     function config($stateProvider, $translatePartialLoaderProvider, msApiProvider, msNavigationServiceProvider) {
+
       // State
       $stateProvider
         .state('app.access', {
@@ -18,9 +19,11 @@
                 }
             },
             resolve: {
-                AccessData: function (msApi)
+                AccessData: function (msApi, $q, AuthService)
                 {
-
+                  if(!AuthService.authenticatedRoutes().includes('app.access')) {                    
+                    return $q.reject('Not Authorized');
+                  }
                 }
             }
         });

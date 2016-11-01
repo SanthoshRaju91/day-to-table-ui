@@ -6,9 +6,139 @@
         <h1>
           Create Course
         </h1>
+        <p>Please fill in the below form for creating a course, and mention your schedules appropriately. Kindly note all the fields are required.</p>
       </div>
     </div>
   </div>
 
   <!-- CONTENT -->
+  <div layout="row">
+    <div flex="5">
+    </div>
+    <div flex>
+      <form name="course" ms-vertical-stepper ng-submit="vm.submitCourse()" ng-model="vm.course" novalidate>
+        <!-- Course Name -->
+        <ms-vertical-stepper-step ng-form="step1" step="1" step-title="'Name of the Course'">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Course Name</label>
+            <input ng-model="vm.course.courseName">
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Course Name -->
+
+        <!-- Description -->
+        <ms-vertical-stepper-step ng-form="step2" step="2" step-title="'Its Description'">
+          <md-input-container class="md-block">
+            <label>Description</label>
+            <textarea ng-model="vm.course.description" md-maxlength="350" rows="5" md-select-on-focus></textarea>
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Description -->
+
+        <!-- Category -->
+        <ms-vertical-stepper-step ng-form="step3" step="3" step-title="'Choose Category'">
+          <md-select ng-model="vm.course.category">
+            <md-option><em>Select Option</em></md-option>
+            <md-option ng-repeat="item in vm.categories" ng-value="item.id">
+              {{item.label}}
+            </md-option>
+          </md-select>
+        </ms-vertical-stepper-step>
+        <!-- /Category -->
+
+        <!-- Commencing from-->
+        <ms-vertical-stepper-step ng-form="step4" step="4" step-title="'Commence Date'">
+          <md-datepicker ng-model="vm.course.commenceDate" md-min-date="vm.minDate" md-placeholder="Enter date"></md-datepicker>
+        </ms-vertical-stepper-step>
+        <!-- /Commencing from-->
+
+        <!-- Address -->
+        <ms-vertical-stepper-step ng-form="step5" step="5" step-title="'Address'">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Address</label>
+            <input ng-model="vm.course.address">
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Address-->
+
+        <!-- Price -->
+        <ms-vertical-stepper-step ng-form="step6" step="6" step-title="'Its Price'">
+          <md-input-container class="md-block">
+            <label>Price (HK USD)</label>
+            <input type="number" step="any" name="rate" ng-model="vm.course.price" min="0" max="4999" />
+            <div ng-messages="course.price.$error" multiple md-auto-hide="false">
+              <div ng-message="required">
+                You've got to charge something! You can't just <b>give away</b> a Missile Defense System.
+              </div>
+              <div ng-message="max">
+                {{course.price.$viewValue | currency:"$":0}} an hour? That's a little ridiculous. I doubt even Bill Clinton could afford that.
+              </div>
+            </div>
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Price -->
+
+        <!-- Amenities -->
+        <ms-vertical-stepper-step ng-form="step7" step="7" step-title="'What Amenities will you provide?'">
+          <md-chips ng-model="vm.amenities" placeholder="Add amenities" readonly="isReadOnly"></md-chips>
+        </ms-vertical-stepper-step>
+        <!-- / Amenities-->
+
+        <!-- Parking -->
+        <ms-vertical-stepper-step ng-form="step8" step="8" step-title="'Parking'">
+          <div flex-gt-sm="50">
+            <md-checkbox ng-model="vm.course.twoWheeler" aria-label="Checkbox 1">
+              Two Wheeler
+            </md-checkbox>
+          </div>
+          <div flex-gt-sm="50">
+            <md-checkbox ng-model="vm.course.fourWheeler" aria-label="Checkbox 2">
+              Four Wheeler
+            </md-checkbox>
+          </div>
+        </ms-vertical-stepper-step>
+        <!-- / Parking-->
+
+        <!-- Languages -->
+        <ms-vertical-stepper-step ng-form="step9" step="9" step-title="'Supported Languages'">
+          <md-chips ng-model="vm.languages" placeholder="Supported Languages" readonly="isReadOnly"></md-chips>
+        </ms-vertical-stepper-step>
+        <!-- / Languages -->
+
+        <!-- Banner -->
+        <ms-vertical-stepper-step ng-form="step10" step="10" step-title="'Add Image'">
+          <p>Currently we are supporting Google Image URL's, paste the desired image URL.</p>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Image URL</label>
+            <input ng-model="vm.course.image">
+          </md-input-container>
+        </ms-vertical-stepper-step>
+        <!-- / Banner -->
+
+        <!-- Schedule -->
+        <ms-vertical-stepper-step ng-form="step11" step="11" step-title="'Mention its schedules'">
+          <p>Please mention the schedule in this format Monday-Friday 10:30AM-11:30AM / Saturday 11:30AM. You can add as many schedules as the desired format.</p>
+          <md-chips ng-model="vm.schedules" placeholder="Supported Languages" readonly="isReadOnly"></md-chips>
+        </ms-vertical-stepper-step>
+        <!-- / Schedule -->
+
+        <ms-vertical-stepper-step ng-form="step12" step="12" step-title="'Add Additional Includes to make the activity more details'">
+          <md-list flex>
+            <md-subheader class="md-no-sticky">Includes.</md-subheader>
+            <md-list-item class="md-2-line" ng-repeat="list in vm.includes track by $index">
+              <p>{{list}}</p>
+            </md-list-item>
+          </md-list>
+
+          <form name="includes">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Add Includes</label>
+              <input ng-model="vm.include">
+            </md-input-container>
+            <md-button class="md-raised md-warn" ng-click="vm.addIncludes()">Add</md-button>
+          </form>
+        </ms-vertical-stepper-step>
+      </form>
+    </div>
+  </div>
 </section>

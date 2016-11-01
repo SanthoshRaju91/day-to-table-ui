@@ -18,9 +18,11 @@
                 }
             },
             resolve: {
-                MessagesData: function (msApi)
+                MessagesData: function (msApi, $q, AuthService)
                 {
-
+                  if(!AuthService.authenticatedRoutes().includes('app.messages')) {                    
+                    return $q.reject('Not Authorized');
+                  }
                 }
             }
         });

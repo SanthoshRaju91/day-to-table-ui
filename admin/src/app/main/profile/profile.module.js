@@ -18,9 +18,11 @@
                 }
             },
             resolve: {
-                ProfileData: function (msApi)
+                ProfileData: function (msApi, $q, AuthService)
                 {
-
+                  if(!AuthService.authenticatedRoutes().includes('app.profile')) {                    
+                    return $q.reject('Not Authorized');
+                  }
                 }
             }
         });

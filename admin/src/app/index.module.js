@@ -8,6 +8,9 @@
     angular
         .module('fuse', [
 
+            //authenticate
+            'app.authenticate',
+
             // Core
             'app.core',
 

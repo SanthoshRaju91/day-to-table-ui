@@ -20,9 +20,11 @@
                     }
                 },
                 resolve: {
-                    ManageData: function (msApi)
+                    ManageData: function (msApi, $q, AuthService)
                     {
-                        
+                      if(!AuthService.authenticatedRoutes().includes('app.manage')) {                    
+                        return $q.reject('Not Authorized');
+                      }
                     }
                 }
             });

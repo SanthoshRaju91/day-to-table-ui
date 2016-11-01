@@ -18,9 +18,11 @@
                 }
             },
             resolve: {
-                CourseData: function (msApi)
+                CourseData: function (msApi, $q, AuthService)
                 {
-
+                  if(!AuthService.authenticatedRoutes().includes('app.course')) {                    
+                    return $q.reject('Not Authorized');
+                  }
                 }
             }
         });
