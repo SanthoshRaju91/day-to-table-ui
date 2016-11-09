@@ -3,12 +3,23 @@
   <div class="header md-accent-bg layout-align-space-between-stretch layout-row" layout="row" layout-align="space-between">
     <div layout="column" layout-align="center start" class="layout-align-center-start layout-column">
       <div class="title ng-binding">
-        <h1>
-          Message Center
-        </h1>
+        <span class="logo-icon">
+          <md-icon md-font-icon="icon-email" class="icon md-default-theme md-font material-icons icon-email" aria-hidden="true"></md-icon>
+        </span>
+        <span class="logo-text">Mailbox</span>
+        <h5>santhoshraju@adbc.com</h5>
       </div>
     </div>
   </div>
 
   <!-- CONTENT -->
+  <div layout="row">
+    <div flex="5">
+    </div>
+    <div flex>
+      <ms-card template="'app/main/messages/templates/card-message.html'"></ms-card>
+    </div>
+    <div flex="5">
+    </div>
+  </div>
 </section>

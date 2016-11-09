@@ -28,6 +28,15 @@ section {
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+
+    .logo-text {
+      font-size: 24px;
+      padding: 20px;
+    }
+    h5 {
+      margin-top: 5px;
+      margin-bottom: 5px
+    }
   }
 }
 
@@ -36,5 +45,13 @@ section {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: .5px;
+  }
+}
+
+
+.template {
+  border-top: 3px solid red;
+  h3,h1 {
+    text-align: center;
   }
 }

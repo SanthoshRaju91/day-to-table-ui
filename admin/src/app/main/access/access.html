@@ -11,4 +11,62 @@
   </div>
 
   <!-- CONTENT -->
+  <div layout="row">
+    <div flex="5">
+    </div>
+    <div flex>
+      <div layout="row">
+        <ms-card template="'app/main/access/templates/card-template.html'" flex="30" ng-model="vm.registered"></ms-card>
+        <ms-card template="'app/main/access/templates/card-template.html'" flex="30" ng-model="vm.superusers"></ms-card>
+        <ms-card template="'app/main/access/templates/card-template.html'" flex="30" ng-model="vm.admins"></ms-card>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div layout="row">
+    <div flex="5">
+    </div>
+    <div flex="45">
+      <md-toolbar layout="row" class="md-hue-3">
+        <div class="md-toolbar-tools">
+          <span>Super User Access Requests</span>
+        </div>
+      </md-toolbar>
+      <md-content>
+        <md-list flex>
+          <md-subheader class="md-no-sticky">{{vm.superUserRequest.count}} Pending requests</md-subheader>
+          <md-list-item class="noright" ng-repeat="item in vm.superUserRequest.list track by $index" ng-click="null">
+            <img ng-src="assets/images/avatars/profile.jpg" class="md-avatar" alt="{{item.who}}" />
+            <div class="md-list-item-text" layout="column" flex="70">
+              <p>{{ item.name }}</p>
+            </div>
+            <md-button class="md-raised md-warn" ng-click="vm.approveRequest(item)">Approve</md-button>
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </div>
+    <div flex="5">
+    </div>
+    <div flex="40">
+      <md-toolbar layout="row" class="md-hue-3">
+        <div class="md-toolbar-tools">
+          <span>Admin Access Requests</span>
+        </div>
+      </md-toolbar>
+      <md-content>
+        <md-list flex>
+          <md-subheader class="md-no-sticky">{{vm.adminRequest.count}} Pending requests</md-subheader>
+          <md-list-item class="noright" ng-repeat="item in vm.adminRequest.list track by $index" ng-click="null">
+            <img ng-src="assets/images/avatars/profile.jpg" class="md-avatar" alt="{{item.who}}" />
+            <div class="md-list-item-text" layout="column" flex="70">
+              <p>{{ item.name }}</p>
+            </div>
+            <md-button class="md-raised md-warn" ng-click="vm.approveRequest(item)">Approve</md-button>
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </div>
+    <div flex="5">
+    </div>
+  </div>
 </section>
