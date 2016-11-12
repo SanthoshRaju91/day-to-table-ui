@@ -12,6 +12,7 @@
         var vm = this;
         vm.user = {};
         vm.user.name = AuthService.name();
+        vm.user.profilePicture = AuthService.profilePicture();
         // Data
         $rootScope.global = {
             search: ''

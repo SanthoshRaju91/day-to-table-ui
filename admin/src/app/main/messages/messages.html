@@ -13,7 +13,7 @@
   </div>
 
   <!-- CONTENT -->
-  <div layout="row">
+  <!-- <div layout="row">
     <div flex="5">
     </div>
     <div flex>
@@ -21,5 +21,47 @@
     </div>
     <div flex="5">
     </div>
+  </div> -->
+  <div layout="column" ng-cloak>
+    <section layout="row" flex>
+      <md-sidenav class="md-sidenav-left sidenav" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" ms-scroll ms-sidenav-helper>
+        <md-content layout-padding>
+          <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-accent md-raised md-hue-1">
+              Compose
+            </md-button>
+          </section>
+          <p hide show-gt-md>
+            This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
+          </p>
+        </md-content>
+      </md-sidenav>
+      <md-content flex layout-padding>
+        <div layout="column" layout-align="top center">
+          <md-toolbar class="md-hue-2">
+            <md-button class="md-icon-button" aria-label="Favorite">
+              <md-icon md-svg-icon="assets/angular-material-assets/img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="More">
+              <md-icon md-svg-icon="assets/angular-material-assets/img/icons/more_vert.svg"></md-icon>
+            </md-button>
+          </md-toolbar>
+          <p>
+            The right sidenav will focus on a specific child element.
+          </p>
+          <div>
+            <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
+              Toggle left
+            </md-button>
+          </div>
+          <div>
+            <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary">
+              Toggle right
+            </md-button>
+          </div>
+        </div>
+        <div flex></div>
+      </md-content>
+    </section>
   </div>
 </section>

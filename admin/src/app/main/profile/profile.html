@@ -1,13 +1,123 @@
 <section class="profile">
-  <!-- HEADER-->
-  <div class="header md-accent-bg layout-align-space-between-stretch layout-row" layout="row" layout-align="space-between">
-    <div layout="column" layout-align="center start" class="layout-align-center-start layout-column">
-      <div class="title ng-binding">
-        <h1>
-          Profile Settings
-        </h1>
-      </div>
+  <!-- Header -->
+  <md-toolbar class="md-tall md-accent tall-header">
+    <div class="user-profile" layout="row" flex="20">
+      <img src="{{vm.imageUrl}}" alt="Profile Image" class="profile-image avatar huge"/>
+      <h1>{{vm.name}}</h1>
     </div>
+  </md-toolbar>
+
+  <!-- Content -->
+  <div ng-cloak>
+    <md-content>
+      <md-tabs md-dynamic-height md-border-bottom>
+
+        <!-- Profile Tab-->
+        <md-tab label="profile">
+          <md-content class="md-padding">
+            <md-subheader class="md-no-sticky">Check your profile information here.</md-subheader>
+            <br>
+            <md-whiteframe class="md-whiteframe-1dp" flex-sm="55" flex-gt-sm="45" flex-gt-md="35" layout="row">
+              <header class="md-accent-bg whiteframe-header">
+                <div class="title ng-scope general-header">General Information</div>
+              </header>
+              <div class="content">
+                <div class="info-line" ng-repeat="item in vm.profile">
+                  <div class="title">
+                    {{item.label}}
+                  </div>
+                  <div class="info">
+                    {{item.value}}
+                  </div>
+                </div>
+              </div>
+            </md-whiteframe>
+
+          </md-content>
+        </md-tab>
+
+        <md-tab label="settings">
+          <md-content class="md-padding">
+            <md-subheader class="md-no-sticky">Profile Settings. You can change your Password, Email Address / upload your profile picture.</md-subheader>
+            <br>
+            <div layout="row">
+              <md-whiteframe class="md-whiteframe-1dp" flex-sm="55" flex-gt-sm="45" flex-gt-md="35" layout="column">
+                <header class="md-accent-bg whiteframe-header">
+                  <div class="title ng-scope">Update Password</div>
+                </header>
+                <div class="content">
+                  <md-subheader class="md-no-sticky">Change your password</md-subheader>
+                  <form name="password" layout="column" ng-submit="vm.updatePassword()">
+                    <md-input-container flex="100">
+                      <label>Old Password</label>
+                      <input ng-model="update.oldPassword" required>
+                    </md-input-container>
+
+                    <md-input-container flex="100">
+                      <label>New Password</label>
+                      <input ng-model="update.newPassword" required>
+                    </md-input-container>
+
+                    <md-input-container flex="100">
+                      <label>Confirm Password</label>
+                      <input ng-model="update.confirmPassword" required>
+                    </md-input-container>
+
+                    <md-button class="md-raised md-warn">Update Password</md-button>
+                  </form>
+                </div>
+              </md-whiteframe>
+
+              <div flex="5">
+              </div>
+
+              <md-whiteframe class="md-whiteframe-1dp" flex-sm="55" flex-gt-sm="45" flex-gt-md="35" layout="column">
+                <header class="md-accent-bg whiteframe-header">
+                  <div class="title ng-scope">Update Email Address</div>
+                </header>
+                <div class="content">
+                  <md-subheader class="md-no-sticky">Update your Email Address</md-subheader>
+                  <form name="email" layout="column" ng-submit="vm.updateEmailAdress()">
+                    <md-input-container flex="100">
+                      <label>Old Email Address</label>
+                      <input ng-model="update.oldEmailAddress" required>
+                    </md-input-container>
+
+                    <md-input-container flex="100">
+                      <label>New Email Address</label>
+                      <input ng-model="update.newEmailAddress" required>
+                    </md-input-container>
+
+                    <md-button class="md-raised md-warn">Update Email Address</md-button>
+                  </form>
+                </div>
+              </md-whiteframe>
+
+              <div flex="5">
+              </div>
+
+              <md-whiteframe class="md-whiteframe-1dp" flex-sm="55" flex-gt-sm="45" flex-gt-md="35" layout="column">
+                <header class="md-accent-bg whiteframe-header">
+                  <div class="title ng-scope">Upload Profile Picture</div>
+                </header>
+                <div class="content">
+                  <md-subheader class="md-no-sticky">Upload your profile picture</md-subheader>
+                  <form name="profilePicture" layout="column" ng-submit="vm.uploadProfilePicture()">
+                    <md-input-container flex="100" class="md-icon-float md-block">
+                      <label>Upload Profile Picture</label>
+                      <input type="file" ng-model="upload.profilePicture" required>
+                    </md-input-container>
+
+                    <md-button class="md-raised md-warn">Upload</md-button>
+                  </form>
+                </div>
+              </md-whiteframe>
+            </div>
+          </md-content>
+        </md-tab>
+
+      </md-tabs>
+    </md-content>
   </div>
 
   <!-- CONTENT -->

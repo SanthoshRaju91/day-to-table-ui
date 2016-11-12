@@ -1,0 +1,74 @@
+<section class="dashboard">
+  <!-- HEADER-->
+  <div class="header md-accent-bg layout-align-space-between-stretch layout-row" layout="row" layout-align="space-between">
+    <div layout="column" layout-align="center start" class="layout-align-center-start layout-column">
+      <div class="title ng-binding">
+        <h1>
+          Dashboard
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div layout="row">
+    <div flex="5"></div>
+    <md-card flex class="select-dropdown">
+      <md-input-container class="dropdown-container">
+        <label>Select Course / Activity</label>
+        <md-select ng-model="ctrl.userState">
+          <md-option><em>Select</em></md-option>
+          <md-option ng-repeat="state in vm.list" ng-value="state.value">
+            {{state.label}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </md-card>
+    <div flex="5"></div>
+  </div>
+  <br><br>
+  <div layout="row">
+    <div flex="5"></div>
+    <div flex="45">
+      <md-toolbar layout="row" class="md-hue-3">
+        <div class="md-toolbar-tools">
+          <span>Enrolled Users</span>
+        </div>
+      </md-toolbar>
+      <md-content>
+        <md-list flex>
+          <md-subheader class="md-no-sticky">30 enrolled</md-subheader>
+          <md-list-item class="md-3-line" ng-repeat="item in vm.enrolledUserList" ng-click="null">
+            <img ng-src="{{item.image}}" class="md-avatar" alt="{{item.name}}" />
+            <div class="md-list-item-text" layout="column">
+              <h3>{{ item.name }}</h3>
+              <p>enrolled on: {{ item.enrolled }}</p>
+            </div>
+            <div style="float:right;" ng-show="item.approved">
+              <md-subheader class="md-no-sticky">Approved</md-subheader>
+            </div>
+            <div style="float:right;" ng-show="!item.approved">
+              <md-button class="md-raised md-warn" ng-click="vm.add(list.id)">Approve</md-button>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </div>
+    <div flex="10"></div>
+    <div flex="30">
+      <div class="details">
+        <md-subheader class="md-no-sticky">Details</md-subheader>
+      
+      </div>
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text layout-align="center center">
+            <span class="md-headline">Total Enrolled Users</span>
+            <span class="md-subhead sub-head">35</span>
+          </md-card-title-text>
+        </md-card-title>
+      </md-card>
+    </div>
+    <div flex="5"></div>
+  </div>
+</section>

@@ -4,7 +4,6 @@
  */
 // bower:scss
 // endbower
-
 /**
  *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
@@ -14,13 +13,12 @@
 
 section {
   .header {
-    background-image: url(http://fuse-angular-material.withinpixels.com/assets/images/backgrounds/header-bg.png);
+    background-image: url("http://fuse-angular-material.withinpixels.com/assets/images/backgrounds/header-bg.png");
     background-size: cover;
     height: 80px;
     min-height: 80px;
     max-height: 80px;
-    padding: 10px;
-    padding-left: 20px;
+    padding: 10px 10px 10px 20px;
     margin-bottom: 25px;
     padding-bottom: 20px;
 
@@ -33,9 +31,10 @@ section {
       font-size: 24px;
       padding: 20px;
     }
+
     h5 {
       margin-top: 5px;
-      margin-bottom: 5px
+      margin-bottom: 5px;
     }
   }
 }
@@ -44,14 +43,93 @@ section {
   span {
     font-size: 14px;
     text-transform: uppercase;
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
   }
 }
 
-
 .template {
   border-top: 3px solid red;
-  h3,h1 {
+
+  h1,
+  h3 {
     text-align: center;
   }
+}
+
+.tall-header {
+  background-image: url("http://fuse-angular-material.withinpixels.com/assets/images/backgrounds/header-bg.png");
+  background-size: cover;
+}
+
+.md-whiteframe-1dp {
+  .whiteframe-header {
+    padding: 16px;
+    .title {
+      font-size: 17px;
+    }
+  }
+  .content {
+    padding: 16px;
+
+    .info-line {
+      margin-bottom: 24px;
+
+      .title {
+        font-size: 15px;
+        font-weight: 500;
+        padding-bottom: 4px;
+      }
+    }
+  }
+}
+
+.user-profile {
+  padding: 15px;
+
+  .profile-image {
+    margin-right: 24px;
+  }
+
+  .avatar.huge {
+    width: 96px;
+    min-width: 96px;
+    height: 96px;
+    line-height: 96px;
+  }
+
+  .avatar {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 8px 0 0;
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    color: #FFF;
+  }
+
+  h1 {
+    float: right;
+    padding-top: 20px;
+    padding-left: 10px;
+
+  }
+}
+
+.general-header {
+  text-transform: uppercase;
+}
+
+.select-dropdown {
+  .dropdown-container {
+    margin: 15px;
+    padding: 10px;
+  }
+}
+
+.sub-head {
+  color: red;
+  font-size: 24px !important;
 }

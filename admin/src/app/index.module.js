@@ -11,6 +11,9 @@
             //authenticate
             'app.authenticate',
 
+            // rest service
+            'app.rest',
+
             // Core
             'app.core',
 
@@ -39,6 +42,9 @@
             'app.messages',
 
             // Profile
-            'app.profile'
+            'app.profile',
+
+            //Dashboard
+            'app.dashboard'
         ]);
 })();
