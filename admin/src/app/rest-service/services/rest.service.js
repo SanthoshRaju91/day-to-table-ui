@@ -6,7 +6,7 @@
     .service('RestService', RestService);
 
     /** @ngInject */
-    function RestService($window) {
+    function RestService() {
       var rest = this;
 
       rest.getEndPoint = function() {
