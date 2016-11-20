@@ -12,7 +12,7 @@
     function carouselSlick() {
       return {
         restrict: 'E',
-        templateUrl: '/app/landing/directives/carousel-slick.html',
+        templateUrl: 'app/landing/directives/carousel-slick.html',
         link: function() {
           jQuery('.tp-banner').revolution({
               dottedOverlay: "none",

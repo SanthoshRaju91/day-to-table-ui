@@ -30,11 +30,12 @@
 
                 this.ratings = [];
                 var self = this;
-                for (var i = 0; i < this.data.ratings; i++) {
+                var i;
+                for (i = 0; i < this.data.ratings; i++) {
                     self.ratings.push('icon-smile voted');
                 }
 
-                for (var i = 0; i < (5 - this.data.ratings); i++) {
+                for (i = 0; i < (5 - this.data.ratings); i++) {
                     self.ratings.push('icon-smile');
                 }
 

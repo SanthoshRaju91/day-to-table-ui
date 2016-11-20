@@ -15,7 +15,7 @@
     controller: modalController
   });
 
-  function modalController() {
+  function modalController($log) {
     var $ctrl = this;
 
     $ctrl.$onInit = function() {
@@ -37,7 +37,7 @@
       instance.result.then(function(selectedItem) {
         $ctrl.selected = selectedItem;
       }, function() {
-        console.log('Modal dismissed at: ' + new Date());
+        $log.log('Modal dismissed at: ' + new Date());
       });
     };
   }

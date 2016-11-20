@@ -18,7 +18,7 @@
     /**
      * Rest service call to retrieve the booking reference details for confirmation page.
      */
-    RestService.get('getBookingById')
+    RestService.get('getBookingById/' + bookingID)
       .thne(function(response) {
         if (response.data.status == 200 && response.data.success) {
           if (response.data.reference) {
@@ -30,8 +30,7 @@
           }
         }
       }, function(err) {
-        $log.error(error);
+        $log.error(err);
       });
-
-  };
+  }
 }());

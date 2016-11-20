@@ -9,7 +9,7 @@
     .controller('RegisterController', RegisterController);
 
     /** @ngInject */
-    function RegisterController(RestService, AuthService, $log, $location, $uibModal) {
+    function RegisterController(RestService, AuthService, $log, $location) {
 
       var vm = this;
       vm.isError = false;
@@ -38,10 +38,10 @@
                 vm.isError = true;
                 vm.errorMessage = response.data.message;
               }
-            }, function(errorResponse) {
-              $log.error(response.data.message);
+            }, function(err) {
+              $log.error(err);
               vm.isError = true;
-              vm.errorMessage = response.data.message;
+              vm.errorMessage = 'Some error while registering the user.';
             });
         } else {
           $log.error('passwords do not match');

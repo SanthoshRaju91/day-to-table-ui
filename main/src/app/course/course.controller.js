@@ -23,11 +23,12 @@
             .then(function(response) {
                 vm.course = response.data.course;
                 vm.ratings = [];
-                for (var i = 0; i < vm.course.ratings; i++) {
+                var i;
+                for (i = 0; i < vm.course.ratings; i++) {
                     vm.ratings.push('icon-smile voted');
                 }
 
-                for (var i = 0; i < (5 - vm.course.ratings); i++) {
+                for (i = 0; i < (5 - vm.course.ratings); i++) {
                     vm.ratings.push('icon-smile');
                 }
                 vm.includedItems = (vm.course.includes) ? vm.course.includes.split(',') : [];
@@ -52,7 +53,7 @@
         vm.adultCount = 0;
         vm.childrenCount = 0;
 
-        $scope.$watchGroup(['adultCount', 'childrenCount'], function(newValues, oldValues) {
+        $scope.$watchGroup(['adultCount', 'childrenCount'], function(newValues) {
             vm.count = parseInt(newValues[0]) + parseInt(newValues[1]) || 0;
         });
 

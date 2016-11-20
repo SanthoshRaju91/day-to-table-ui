@@ -131,8 +131,7 @@
           vm.activities = response.data.activityList;
         }, function(err) {
           $log.error(err);
-        })
-    };
-
+        });
+    }
   }
 }());

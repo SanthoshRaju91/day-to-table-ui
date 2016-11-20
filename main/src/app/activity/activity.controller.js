@@ -29,11 +29,11 @@
         vm.activity = activity;
         vm.includedItems = (activity.includes) ? activity.includes.split(',') : [];
         vm.features = [];
-        vm.isParking = (activity.parking.length > 0) ? features.push({
+        vm.isParking = (activity.parking.length > 0) ? vm.features.push({
           'iconClass': 'icon_set_1_icon-27',
           'name': 'Parking'
         }) : false;
-        vm.isAudio = (activity.languages.length > 0) ? features.push({
+        vm.isAudio = (activity.languages.length > 0) ? vm.features.push({
           'iconClass': 'icon_set_1_icon-13',
           'name': 'Accessibiliy'
         }) : false;
@@ -46,7 +46,7 @@
         $log.error(err);
       });
 
-    $scope.$watchGroup(['adultCount', 'childrenCount'], function(newValues, oldValues) {
+    $scope.$watchGroup(['adultCount', 'childrenCount'], function(newValues) {
       if (vm.adultCount || vm.childrenCount) {
         vm.isBookingAvailable = true;
       }
