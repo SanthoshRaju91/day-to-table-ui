@@ -15,7 +15,7 @@
         //Data
         vm.page = 1;
         vm.showMoreAvaiable = false;
-        let iconsArray = {
+        var iconsArray = {
             MUSIC: 'icon-music-3',
             DANCE: 'icon-pitch',
             SOCCER: 'icon-soccer',
@@ -44,7 +44,7 @@
          */
         RestService.get('getCategoryList')
             .then(function(response) {
-                let categories = [];
+                var categories = [];
                 for (var i = 0; i < response.data.categoryList.length; i++) {
                     var obj = {};
                     obj.categoryID = response.data.categoryList[i].categoryID;
@@ -74,7 +74,7 @@
 
         vm.applySort = function(type, order) {
             vm.pageNo = 1;
-            let sort = {};
+            var sort = {};
             sort.type = type;
             sort.order = order;
             getCourses(vm.pageNo, sort);
@@ -87,7 +87,7 @@
          */
         vm.applyFilter = function(type, value) {
             vm.pageNo = 1;
-            let filter = {};
+            var filter = {};
             filter.type = type;
             if (value) {
                 filter.value = value;
@@ -109,7 +109,7 @@
          * @method: getCourses
          */
         function getCourses(page, sort, filter) {
-            let payload = {};
+            var payload = {};
             payload.pageNo = page;
 
             //checking if sort is applied

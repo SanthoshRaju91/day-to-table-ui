@@ -5,11 +5,11 @@
 (function() {
   'use strict';
 
-  angular.module('app.register.controller', [])
+  angular.module('app.register.controller', ['ui.bootstrap'])
     .controller('RegisterController', RegisterController);
 
     /** @ngInject */
-    function RegisterController(RestService, AuthService, $log, $location) {
+    function RegisterController(RestService, AuthService, $log, $location, $uibModal) {
 
       var vm = this;
       vm.isError = false;
@@ -19,7 +19,7 @@
       */
       vm.registerUser = function() {
         if(vm.password === vm.confirmPassword) {
-          let payload = {
+          var payload = {
             emailAddress: vm.emailAddress,
             password: vm.password,
             firstName: vm.firstName,
@@ -27,10 +27,11 @@
             contact: vm.contact,
             gender: vm.gender
           };
+
           RestService.post('registerUser', payload)
             .then(function(response) {
               if(response.data.status === 200 && response.data.success) {
-                alert('User registered, please login again');
+
                 $location.path('/');
               } else {
                 $log.error(response.data.message);

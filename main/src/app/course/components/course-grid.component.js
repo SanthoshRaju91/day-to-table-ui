@@ -29,12 +29,12 @@
                 this.scheduleList = this.data.schedule.split('|');
 
                 this.ratings = [];
-                let self = this;
-                for (let i = 0; i < this.data.ratings; i++) {
+                var self = this;
+                for (var i = 0; i < this.data.ratings; i++) {
                     self.ratings.push('icon-smile voted');
                 }
 
-                for (let i = 0; i < (5 - this.data.ratings); i++) {
+                for (var i = 0; i < (5 - this.data.ratings); i++) {
                     self.ratings.push('icon-smile');
                 }
 

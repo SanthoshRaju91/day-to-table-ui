@@ -27,7 +27,7 @@
                   password: vm.password
               })
               .then(function(response) {
-                  AuthService.logIn(response.data.token, response.data.role, JSON.stringify(response.data.user));
+                  AuthService.logIn(response.data.token, response.data.role, angular.toJson(response.data.user));
                   vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
                   vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().firstName + " " + AuthService.getUserDetails().lastName : '';
               }, function(err) {

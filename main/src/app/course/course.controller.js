@@ -13,7 +13,7 @@
         var vm = this;
 
         // Data
-        let courseId = $stateParams.courseId;
+        var courseId = $stateParams.courseId;
 
         // method
         /**
@@ -23,11 +23,11 @@
             .then(function(response) {
                 vm.course = response.data.course;
                 vm.ratings = [];
-                for (let i = 0; i < vm.course.ratings; i++) {
+                for (var i = 0; i < vm.course.ratings; i++) {
                     vm.ratings.push('icon-smile voted');
                 }
 
-                for (let i = 0; i < (5 - vm.course.ratings); i++) {
+                for (var i = 0; i < (5 - vm.course.ratings); i++) {
                     vm.ratings.push('icon-smile');
                 }
                 vm.includedItems = (vm.course.includes) ? vm.course.includes.split(',') : [];
@@ -83,14 +83,14 @@
         vm.minDate = new Date().toISOString().split('T')[0];
 
         /**
-         * Function to submit the form for complete the booking
+         * Function to submit the form for compvare the booking
          */
         vm.errorSubmit = false;
         vm.submitBooking = function() {
             if (vm.adultCount == 0 && vm.childrenCount == 0) {
                 vm.errorSubmit = true;
             } else {
-                let payload = {
+                var payload = {
                     emailAddress: vm.emailAddress,
                     firstName: vm.firstName,
                     lastName: vm.lastName,

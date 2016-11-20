@@ -65,7 +65,7 @@
          * @method: getUserDetails
          */
         user.getUserDetails = function() {
-            return JSON.parse($window.localStorage.getItem('userDetails'));
+            return angular.toJson($window.localStorage.getItem('userDetails'));
         }
 
         return user;

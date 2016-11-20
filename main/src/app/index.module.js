@@ -21,6 +21,9 @@
       // ngAria
       'ngAria',
 
+      // ui.bootstrap
+      // 'ui.bootstrap',
+
       // ui.router
       'ui.router',
 
@@ -49,6 +52,9 @@
       'app.login',
 
       // app.register
-      'app.register'
+      'app.register',
+
+      // app.modal-component
+      'app.modal-component'
     ]);
 })();

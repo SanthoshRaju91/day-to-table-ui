@@ -13,7 +13,7 @@
     var vm = this;
 
     // Data
-    let activityId = $stateParams.activityId;
+    var activityId = $stateParams.activityId;
     vm.adultCount = 0;
     vm.childrenCount = 0;
     vm.errorSubmit = false;
@@ -25,7 +25,7 @@
      */
     RestService.get('getActivityById/' + activityId)
       .then(function(response) {
-        let activity = response.data.activity;
+        var activity = response.data.activity;
         vm.activity = activity;
         vm.includedItems = (activity.includes) ? activity.includes.split(',') : [];
         vm.features = [];
@@ -93,7 +93,7 @@
       if (vm.adultCount == 0 && vm.childrenCount == 0) {
         vm.errorSubmit = true;
       } else {
-        let payload = {
+        var payload = {
           emailAddress: vm.emailAddress,
           firstName: vm.firstName,
           lastName: vm.lastName,

@@ -16,9 +16,9 @@
             email: vm.email,
             password: vm.password
           })
-          .then(function(resonse) {
+          .then(function(response) {
             if (response.data.status === 200 && response.data.success) {
-              AuthService.logIn(response.data.token, response.data.role, JSON.stringify(response.data.user));
+              AuthService.logIn(response.data.token, response.data.role, angular.toJson(response.data.user));
               $location.path('/');
             } else {
               vm.isError = true;
@@ -26,7 +26,7 @@
             }
           }, function(err) {
             vm.isError = true;
-            vm.errorMessage = response.data.message;
+            vm.errorMessage = 'Error while logging in.';
             $log.error(err);
           });
       }

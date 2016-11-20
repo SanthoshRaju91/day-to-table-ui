@@ -13,7 +13,7 @@
       var vm = this;
 
       //Data
-      let bookingID = $stateParams.reference;
+      var bookingID = $stateParams.reference;
 
       /**
       * Rest service call to retrieve the booking reference details for confirmation page.

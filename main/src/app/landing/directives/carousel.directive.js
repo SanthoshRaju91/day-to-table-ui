@@ -13,7 +13,7 @@
       return {
         restrict: 'E',
         templateUrl: '/app/landing/directives/carousel-slick.html',
-        link: function(scope, elem, attr) {
+        link: function() {
           jQuery('.tp-banner').revolution({
               dottedOverlay: "none",
               delay: 16000,
@@ -25,7 +25,7 @@
               thumbHeight: 50,
               thumbAmount: 5,
 
-              navigationType: "bullet",
+              navigationType: "bulvar",
               navigationArrows: "solo",
               navigationStyle: "none",
 
@@ -75,7 +75,7 @@
 
               hideThumbsOnMobile: "off",
               hideNavDelayOnMobile: 1500,
-              hideBulletsOnMobile: "off",
+              hideBulvarsOnMobile: "off",
               hideArrowsOnMobile: "on",
               hideThumbsUnderResolution: 0,
 

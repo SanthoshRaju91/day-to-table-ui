@@ -14,7 +14,7 @@
             templateUrl: 'app/landing/components/popular-grid.html',
             controller: function($location) {
                 //Icon mapper for category.
-                let iconMapper = {
+                var iconMapper = {
                     MUSIC: 'icon-music-4',
                     DANCE: 'icon_set_1_icon-30',
                     EAT: 'icon_set_1_icon-14'
@@ -23,11 +23,11 @@
 
                 //computing ratings
                 this.ratings = [];
-                let self = this;
-                for (let i = 0; i < this.data.ratings; i++) {
+                var self = this;
+                for (var i = 0; i < this.data.ratings; i++) {
                     self.ratings.push('icon-smile voted');
                 }
-                for (let i = 0; i < (5 - this.data.ratings); i++) {
+                for (var i = 0; i < (5 - this.data.ratings); i++) {
                     self.ratings.push('icon-smile');
                 }
 

@@ -19,10 +19,12 @@
         if(vm.verfication === 4) {
           RestService.post('/queryMessage', {firstName: vm.firstName, lastName: vm.lastName, emailAddress: vm.emailAddress, phone: vm.phone, message: vm.message})
             .then(function(response) {
-              vm.alertType = 'alert-success';
-              vm.notification = true;
-              vm.notificationMessage = 'Thank you, your requested has been submitted, our team will get back to you at the earliest.';
-              vm.firstName = vm.lastName = vm.emailAddress = vm.phone = vm.message = vm.verfication = '';
+              if(response.data.status === 200 && response.data.success) {
+                vm.alertType = 'alert-success';
+                vm.notification = true;
+                vm.notificationMessage = 'Thank you, your requested has been submitted, our team will get back to you at the earliest.';
+                vm.firstName = vm.lastName = vm.emailAddress = vm.phone = vm.message = vm.verfication = '';
+              }
             }, function(err) {
               $log.error(err);
               vm.alertType = 'alert-danger';
