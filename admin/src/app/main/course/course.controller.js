@@ -33,7 +33,7 @@
       * Submitting the course.
       */
       vm.submitCourse = function() {
-        let payload = {};
+        var payload = {};
 
         payload.courseName = vm.course.courseName;
         payload.description = vm.course.description;

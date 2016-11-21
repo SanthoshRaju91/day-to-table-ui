@@ -31,7 +31,7 @@
      * Submitting the form
      */
     vm.submitActivity = function() {
-      let payload = {};
+      var payload = {};
       payload.activityName = vm.activity.activityName;
       payload.description = vm.activity.description;
       payload.eventDate = vm.activity.date;
