@@ -22,7 +22,7 @@
       'ngAria',
 
       // ui.bootstrap
-      // 'ui.bootstrap',
+      'ui.bootstrap',
 
       // ui.router
       'ui.router',
