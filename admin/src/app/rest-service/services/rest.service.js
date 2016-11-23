@@ -9,8 +9,10 @@
     function RestService() {
       var rest = this;
 
+      rest.url = $location.protocol() + '://'+ $location.host() +':'+  $location.port() + '/api/v1/';
+
       rest.getEndPoint = function() {
-        return 'http://localhost:3000/api/';
+        return rest.url ||  'http://localhost:3000/api/';
       }
 
       return rest;

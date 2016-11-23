@@ -12,7 +12,7 @@
     function RestService($http, $q, $location) {
         var rest = this;
 
-        rest.url = $location.protocol() + '://'+ $location.host() +':'+  $location.port() + '/';
+        rest.url = $location.protocol() + '://'+ $location.host() +':'+  $location.port() + '/api/v1/';
         /**
          * Function returing the end point url
          * @method: endPoint

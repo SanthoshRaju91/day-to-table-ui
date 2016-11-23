@@ -22,7 +22,7 @@
        * @method: login
        */
       vm.login = function() {
-          RestService.post('/login', {
+          RestService.post('login', {
                   email: vm.email,
                   password: vm.password
               })
