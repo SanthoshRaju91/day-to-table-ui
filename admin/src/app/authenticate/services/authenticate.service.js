@@ -19,7 +19,7 @@
     user.name = function() {
       // return $window.localStorage.getItem('fullname'); // for live
       // for testing
-      return ($window.localStorage.getItem('fullname')) ? $window.localStorage.getItem('fullname') : 'Santhosh Raju';
+      return ($window.localStorage.getItem('fullname')) ? $window.localStorage.getItem('fullname') : '';
     }
 
     user.token = function() {

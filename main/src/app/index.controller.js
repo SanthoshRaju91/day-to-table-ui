@@ -14,7 +14,7 @@
 
     // Data
     vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
-    vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().firstName + " " + AuthService.getUserDetails().lastName : '';
+    vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
 
     // methods
     /**
@@ -27,9 +27,9 @@
           password: vm.password
         })
         .then(function(response) {
-          AuthService.logIn(response.data.token, response.data.role, angular.toJson(response.data.user));
+          AuthService.logIn(response.data.token, response.data.user.role, angular.toJson(response.data.user));
           vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
-          vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().firstName + " " + AuthService.getUserDetails().lastName : '';
+          vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
         }, function(err) {
           $log.error(err);
         });
@@ -46,7 +46,7 @@
           if (response.status === 200) {
             AuthService.logOut();
             vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
-            vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().firstName + " " + AuthService.getUserDetails().lastName : '';
+            vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
             // navigating to landing page
             $location.path('/');
           }

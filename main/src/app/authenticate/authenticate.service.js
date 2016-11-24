@@ -22,6 +22,7 @@
             $window.localStorage.setItem('token', token);
             $window.localStorage.setItem('role', role);
             $window.localStorage.setItem('userDetails', userDetails);
+            $window.localStorage.setItem('fullname', userDetails.first_name + ' ' + userDetails.last_name);
         }
 
 
