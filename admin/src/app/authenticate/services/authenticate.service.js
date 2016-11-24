@@ -22,7 +22,7 @@
       return ($window.localStorage.getItem('fullname')) ? $window.localStorage.getItem('fullname') : '';
     }
 
-    user.token = function() {
+    user.getToken = function() {
       return $window.localStorage.getItem('token');
     }
 
