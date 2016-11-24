@@ -9,7 +9,7 @@
     .service('RestService', RestService);
 
   /** @ngInject */
-  function RestService($http, $q, $location, $httpProvider) {
+  function RestService($http, $q, $location) {
     var rest = this;
 
     rest.url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/v1/';
@@ -98,7 +98,7 @@
       return $q(function(resolve, reject) {
         // intercepting http service request.
         $httpProvider.interceptors.push('AuthInterceptor');
-        
+
         $http({
             method: 'DELETE',
             url: rest.url + url,
