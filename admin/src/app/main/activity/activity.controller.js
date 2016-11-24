@@ -6,29 +6,29 @@
     .controller('ActivityController', ActivityController);
 
   /** @ngInject*/
-  function ActivityController(ActivityData) {
+  function ActivityController(ActivityData, RestService, $log, $location, $mdToast) {
     var vm = this;
     vm.amenities = [];
     vm.languages = [];
     vm.includes = [];
     vm.minDate = new Date();
 
-    vm.categories = [{
-      id: 1,
-      label: 'Music'
-    }, {
-      id: 2,
-      label: 'Dance'
-    }, {
-      id: 3,
-      label: 'Teaching'
-    }, {
-      id: 4,
-      label: 'Sport'
-    }];
+    /**
+     * Rest API call for getting all the categories
+     * @API: categories
+     */
+    RestService.get('categories')
+      .then(function(response) {
+        if (response.data) {
+          vm.categories = response.data.categories;
+        }
+      }, function(err) {
+        $log.error(err);
+      });
 
     /**
-     * Submitting the form
+     * Function to create a new activity.
+     * @method: submitActivity
      */
     vm.submitActivity = function() {
       var payload = {};
@@ -47,7 +47,15 @@
       payload.imageURL = vm.activity.image;
       payload.includes = vm.includes;
       payload.categories = vm.activity.category;
-      console.log(JSON.stringify(payload));
+
+      RestService.post('activities/new', payload)
+        .then(function(response) {
+          $mdToast.show($mdToast.simple().textContent('New Activited has been created, your activity is now deployed and available on your dashboard screen'));
+          $location.path('/dashboard');
+        }, function(err) {
+          $log.error(err);
+          $mdToast.show($mdToast.simple().textContent('Something went wrong, please try again'));
+        });
     }
 
 

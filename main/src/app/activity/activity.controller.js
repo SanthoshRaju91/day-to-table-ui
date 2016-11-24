@@ -23,25 +23,27 @@
     /**
      * Function to get the activity details
      */
-    RestService.get('getActivityById/' + activityId)
+    RestService.get('activity/' + activityId)
       .then(function(response) {
-        var activity = response.data.activity;
-        vm.activity = activity;
-        vm.includedItems = (activity.includes) ? activity.includes.split(',') : [];
-        vm.features = [];
-        vm.isParking = (activity.parking.length > 0) ? vm.features.push({
-          'iconClass': 'icon_set_1_icon-27',
-          'name': 'Parking'
-        }) : false;
-        vm.isAudio = (activity.languages.length > 0) ? vm.features.push({
-          'iconClass': 'icon_set_1_icon-13',
-          'name': 'Accessibiliy'
-        }) : false;
-        vm.features.push({
-          'iconClass': 'icon_set_1_icon-83',
-          name: activity.duration
-        });
-        vm.isBookingAvailable = (response.data.activityStatus.toUpperCase() == 'OPEN') ? true : false;
+        if (response.data) {
+          var activity = response.data.activity;
+          vm.activity = activity;
+          vm.includedItems = (activity.includes) ? activity.includes.split(',') : [];
+          vm.features = [];
+          vm.isParking = (activity.parking.length > 0) ? vm.features.push({
+            'iconClass': 'icon_set_1_icon-27',
+            'name': 'Parking'
+          }) : false;
+          vm.isAudio = (activity.languages.length > 0) ? vm.features.push({
+            'iconClass': 'icon_set_1_icon-13',
+            'name': 'Accessibiliy'
+          }) : false;
+          vm.features.push({
+            'iconClass': 'icon_set_1_icon-83',
+            name: activity.duration
+          });
+          vm.isBookingAvailable = (response.data.activityStatus.toUpperCase() == 'OPEN') ? true : false;
+        }
       }, function(err) {
         $log.error(err);
       });

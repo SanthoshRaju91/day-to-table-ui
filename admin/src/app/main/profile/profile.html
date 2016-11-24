@@ -50,17 +50,17 @@
                   <form name="password" layout="column" ng-submit="vm.updatePassword()">
                     <md-input-container flex="100">
                       <label>Old Password</label>
-                      <input ng-model="update.oldPassword" required>
+                      <input ng-model="vm.update.oldPassword" required>
                     </md-input-container>
 
                     <md-input-container flex="100">
                       <label>New Password</label>
-                      <input ng-model="update.newPassword" required>
+                      <input ng-model="vm.update.newPassword" required>
                     </md-input-container>
 
                     <md-input-container flex="100">
                       <label>Confirm Password</label>
-                      <input ng-model="update.confirmPassword" required>
+                      <input ng-model="vm.update.confirmPassword" required>
                     </md-input-container>
 
                     <md-button class="md-raised md-warn">Update Password</md-button>
@@ -80,12 +80,12 @@
                   <form name="email" layout="column" ng-submit="vm.updateEmailAdress()">
                     <md-input-container flex="100">
                       <label>Old Email Address</label>
-                      <input ng-model="update.oldEmailAddress" required>
+                      <input ng-model="vm.update.oldEmailAddress" required>
                     </md-input-container>
 
                     <md-input-container flex="100">
                       <label>New Email Address</label>
-                      <input ng-model="update.newEmailAddress" required>
+                      <input ng-model="vm.update.newEmailAddress" required>
                     </md-input-container>
 
                     <md-button class="md-raised md-warn">Update Email Address</md-button>

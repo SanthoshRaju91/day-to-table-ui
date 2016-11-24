@@ -51,7 +51,15 @@
         payload.image = vm.course.image;
         payload.schedules = vm.schedules;
         payload.includes = vm.includes;
-        console.log(JSON.stringify(payload));
+
+        RestService.post('courses/new', payload)
+          .then(function(response) {
+            $mdToast.show($mdToast.simple().textContent('New Course has been created, your activity is now deployed and available on your dashboard screen'));
+            $location.path('/dashboard');
+          }, function(err) {
+            $log.error(err);
+            $mdToast.show($mdToast.simple().textContent('Something went wrong, please try again'));
+          });
       }
 
       /**

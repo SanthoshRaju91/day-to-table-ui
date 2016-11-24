@@ -18,8 +18,8 @@
       /**
       * Rest service call to retrieve the booking reference details for confirmation page.
       */
-      RestService.get('getBookingById/' + bookingID)
-        .thne(function(response) {
+      RestService.get('booking/' + bookingID)
+        .then(function(response) {
           if(response.data.status == 200 && response.data.success) {
             if(response.data.reference) {
               vm.booking = response.data.booking.booking;

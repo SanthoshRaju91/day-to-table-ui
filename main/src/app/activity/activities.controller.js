@@ -44,18 +44,20 @@
     /**
      * Rest service to get all the categories.
      */
-    RestService.get('getCategoryList')
+    RestService.get('categories')
       .then(function(response) {
-        var categories = [];
-        for (var i = 0; i < response.data.categoryList.length; i++) {
-          var obj = {};
-          obj.categoryID = response.data.categoryList[i].categoryID;
-          obj.iconClass = iconsArray[response.data.categoryList[i].categoryName.toUpperCase()];
-          obj.categoryName = response.data.categoryList[i].categoryName;
-          categories.push(obj);
+        if (response.data) {
+          var categories = [];
+          for (var i = 0; i < response.data.categoryList.length; i++) {
+            var obj = {};
+            obj.categoryID = response.data.categoryList[i].categoryID;
+            obj.iconClass = iconsArray[response.data.categoryList[i].categoryName.toUpperCase()];
+            obj.categoryName = response.data.categoryList[i].categoryName;
+            categories.push(obj);
+          }
+          vm.categories = categories;
+          getActivities(vm.pageNo);
         }
-        vm.categories = categories;
-        getActivities(vm.pageNo);
       }, function(err) {
         $log.error(err);
       });
@@ -122,13 +124,15 @@
         payload.filter = filter;
       }
 
-      RestService.get('getAllActivitiesForUser', payload)
+      RestService.get('activities', payload)
         .then(function(response) {
-          if (response.data.isMore) {
-            vm.showMoreAvaiable = true;
+          if (response.data) {
+            if (response.data.isMore) {
+              vm.showMoreAvaiable = true;
+            }
+            vm.count = response.data.count;
+            vm.activities = response.data.activityList;
           }
-          vm.count = response.data.count;
-          vm.activities = response.data.activityList;
         }, function(err) {
           $log.error(err);
         });

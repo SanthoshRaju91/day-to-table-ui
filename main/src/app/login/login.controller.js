@@ -17,12 +17,12 @@
             password: vm.password
           })
           .then(function(response) {
-            if (response.data.status === 200 && response.data.success) {
-              AuthService.logIn(response.data.token, response.data.role, angular.toJson(response.data.user));
+            if(response.data) {
+              AuthService.logIn(response.data.token, response.data.user.role, angular.toJson(response.data.user));
               $location.path('/');
             } else {
               vm.isError = true;
-              vm.errorMessage = response.data.message;
+              vm.errorMessage = 'Something went wrong';
             }
           }, function(err) {
             vm.isError = true;
