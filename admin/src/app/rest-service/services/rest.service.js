@@ -31,7 +31,7 @@
             data: (data) ? data : ''
           })
           .then(function(response) {
-            if (response && response.data.success && response.status === 200) {
+            if (response) {
               resolve(response);
             } else {
               reject(response);
@@ -54,7 +54,7 @@
             data: (data) ? data : ''
           })
           .then(function(response) {
-            if (response && response.data.success && response.status === 200) {
+            if (response) {
               resolve(response);
             } else {
               reject(response);
@@ -77,7 +77,7 @@
             data: (data) ? data : ''
           })
           .then(function(response) {
-            if (response && response.data.success && response.status === 200) {
+            if (response) {
               resolve(response);
             } else {
               reject(response);
@@ -100,7 +100,7 @@
             data: (data) ? data : ''
           })
           .then(function(response) {
-            if (response && response.data.success && response.status === 200) {
+            if (response) {
               resolve(response);
             } else {
               reject(response);

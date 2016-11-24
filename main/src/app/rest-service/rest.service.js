@@ -33,7 +33,7 @@
             data: (data) ? data : ''
           })
           .then(function(response) {
-            if (response && response.success) {
+            if (response) {
               resolve(response);
             } else {
               reject(response);
@@ -56,7 +56,7 @@
             data: data
           })
           .then(function(response) {
-            if (response && response.success) {
+            if (response) {
               resolve(response);
             } else {
               reject(response);
@@ -79,7 +79,7 @@
             data: data
           })
           .then(function(response) {
-            if (response && response.success) {
+            if (response) {
               resolve(response);
             } else {
               reject(response);
@@ -105,7 +105,7 @@
             data: data
           })
           .then(function(response) {
-            if (response && response.success && response.status) {
+            if (response) {
               resolve(response);
             } else {
               reject(response);
