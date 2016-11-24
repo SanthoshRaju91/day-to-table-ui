@@ -40,6 +40,10 @@
       return ($window.localStorage.getItem('userDetails')) ? ($window.localStorage.getItem('userDetails')) : [];
     }
 
+    user.name = function() {
+      return ($window.localStorage.getItem('fullname')) ? ($window.localStorage.getItem('fullname')) : '';
+    }
+
     user.profilePicture = function() {
       return ($window.localStorage.getItem('profilePicture')) ? $window.localStorage.getItem('profilePicture') : 'http://www.exaholics.com/wp-content/uploads/avatars/1404/avatar1404-bpthumb.jpg'
     }

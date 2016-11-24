@@ -9,8 +9,18 @@
   function ProfileController(ProfileData, AuthService, $mdToast) {
     var vm = this;
 
-    vm.profile = AuthService.details();
+    var profile = AuthService.details();
 
+    vm.profile = [];
+    var keys = Object.keys(profile);
+
+    for(var i=0; i<keys.length; i++) {
+      var obj = {};
+      obj.label = keys[i];
+      obj.value = profile[keys[i]];
+      vm.profile.push(obj);
+    }
+    
     vm.name = AuthService.name();
     vm.imageUrl = AuthService.profilePicture();
     vm.update = {};
