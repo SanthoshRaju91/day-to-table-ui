@@ -22,7 +22,7 @@
             $window.localStorage.setItem('token', token);
             $window.localStorage.setItem('role', role);
             $window.localStorage.setItem('userDetails', userDetails);
-            $window.localStorage.setItem('fullname', userDetails.first_name + ' ' + userDetails.last_name);
+            $window.localStorage.setItem('fullname', JSON.parse(userDetails).first_name + ' ' + JSON.parse(userDetails).last_name);
         }
 
 
@@ -35,6 +35,7 @@
             $window.localStorage.removeItem('token');
             $window.localStorage.removeItem('role');
             $window.localStorage.removeItem('userDetails');
+            $window.localStorage.removeItem('fullname');
         }
 
         /**
@@ -66,7 +67,15 @@
          * @method: getUserDetails
          */
         user.getUserDetails = function() {
-            return angular.toJson($window.localStorage.getItem('userDetails'));
+            return $window.localStorage.getItem('userDetails');
+        }
+
+        /**
+        * Function to get full name of the user
+        * @method: getFullName
+        */
+        user.getFullName = function() {
+          return ($window.localStorage.getItem('fullname')) ? $window.localStorage.getItem('fullname') : '';
         }
 
         return user;

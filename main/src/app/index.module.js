@@ -30,6 +30,9 @@
       // toastr
       'toastr',
 
+      // app.main
+      'app.main',
+
       // app.authenticate
       'app.authenticate',
 

@@ -12,7 +12,9 @@
   function RestService($http, $q, $location) {
     var rest = this;
 
-    rest.url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/v1/';
+    // rest.url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/v1/';
+    rest.url = 'http://127.0.0.1:8080/api/v1/';
+
     /**
      * Function returing the end point url
      * @method: endPoint
@@ -33,7 +35,7 @@
             data: (data) ? data : ''
           })
           .then(function(response) {
-            if (response) {
+            if (response && response.data.success) {
               resolve(response);
             } else {
               reject(response);
@@ -56,7 +58,7 @@
             data: data
           })
           .then(function(response) {
-            if (response) {
+            if (response && response.data.success) {
               resolve(response);
             } else {
               reject(response);
@@ -79,7 +81,7 @@
             data: data
           })
           .then(function(response) {
-            if (response) {
+            if (response && response.data.success) {
               resolve(response);
             } else {
               reject(response);
@@ -97,7 +99,7 @@
     rest.delete = function(url, data) {
       return $q(function(resolve, reject) {
         // intercepting http service request.
-        $httpProvider.interceptors.push('AuthInterceptor');
+        // $httpProvider.interceptors.push('AuthInterceptor');
 
         $http({
             method: 'DELETE',
@@ -105,7 +107,7 @@
             data: data
           })
           .then(function(response) {
-            if (response) {
+            if (response && response.data.success) {
               resolve(response);
             } else {
               reject(response);

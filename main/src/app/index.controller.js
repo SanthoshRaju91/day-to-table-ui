@@ -5,7 +5,7 @@
 (function() {
   'use strict';
 
-  angular.module('main')
+  angular.module('app.main', [])
     .controller('MainController', MainController);
 
   /** @ngInject */
@@ -29,7 +29,7 @@
         .then(function(response) {
           AuthService.logIn(response.data.token, response.data.user.role, angular.toJson(response.data.user));
           vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
-          vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
+          vm.fullName = AuthService.getFullName();
         }, function(err) {
           $log.error(err);
         });
@@ -43,13 +43,11 @@
       var payload = {};
       RestService.delete('logoff', payload)
         .then(function(response) {
-          if (response.status === 200) {
-            AuthService.logOut();
-            vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
-            vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
-            // navigating to landing page
-            $location.path('/');
-          }
+          AuthService.logOut();
+          vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
+          vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
+          // navigating to landing page
+          $location.path('/');
         }, function(err) {
           $log.error(err);
         });
