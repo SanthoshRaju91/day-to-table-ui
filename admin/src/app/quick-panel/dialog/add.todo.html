@@ -1,0 +1,43 @@
+<md-dialog aria-label="Add TODO" style="width: 900px; height: 1200px">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add To - Do</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.cancel()">
+          <md-icon md-svg-src="assets/angular-material-assets/img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-input-container class="md-block">
+          <label>Title</label>
+          <input required name="clientName" ng-model="vm.todo.title">
+          <div ng-messages="projectForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <input md-maxlength="30" required md-no-asterisk name="description" ng-model="vm.todo.description">
+          <div ng-messages="projectForm.description.$error">
+            <div ng-message="required">This is required.</div>
+            <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+          </div>
+        </md-input-container>
+
+        <md-datepicker ng-model="vm.todo.target" md-min-date="vm.minDate" md-placeholder="Target date" class="md-block"></md-datepicker>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="vm.cancel()">
+        Cancel
+      </md-button>
+      <md-button ng-click="vm.add()">
+        Add
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

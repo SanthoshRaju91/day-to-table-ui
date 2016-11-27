@@ -7,7 +7,7 @@
         .config(config);
 
     /** @ngInject */
-    function config($translatePartialLoaderProvider, msApiProvider)
+    function config($translatePartialLoaderProvider, msApiProvider, $httpProvider)
     {
         // Translation
         $translatePartialLoaderProvider.addPart('app/quick-panel');
@@ -17,5 +17,7 @@
         msApiProvider.register('quickPanel.contacts', ['app/data/quick-panel/contacts.json']);
         msApiProvider.register('quickPanel.events', ['app/data/quick-panel/events.json']);
         msApiProvider.register('quickPanel.notes', ['app/data/quick-panel/notes.json']);
+
+        $httpProvider.interceptors.push('AuthInterceptor');
     }
 })();

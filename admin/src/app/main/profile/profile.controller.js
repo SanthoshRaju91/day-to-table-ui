@@ -9,18 +9,27 @@
   function ProfileController(ProfileData, AuthService, $mdToast) {
     var vm = this;
 
-    var profile = AuthService.details();
+    var profile = JSON.parse(AuthService.details());
 
     vm.profile = [];
     var keys = Object.keys(profile);
 
+    var labels = {
+      email: 'Email Address',
+      first_name: 'First Name',
+      last_name: 'Last Name',
+      contact: 'Contact No.'
+    }
+
     for(var i=0; i<keys.length; i++) {
       var obj = {};
-      obj.label = keys[i];
-      obj.value = profile[keys[i]];
+      if(labels[keys[i]]) {
+        obj.label = labels[keys[i]];
+        obj.value = profile[keys[i]];
+      }
       vm.profile.push(obj);
     }
-    
+
     vm.name = AuthService.name();
     vm.imageUrl = AuthService.profilePicture();
     vm.update = {};
