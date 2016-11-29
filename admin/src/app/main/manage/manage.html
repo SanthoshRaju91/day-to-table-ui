@@ -22,14 +22,14 @@
       </md-toolbar>
       <md-list flex>
         <md-subheader class="md-no-sticky">{{vm.enrolled.activitesCount}} activites & {{vm.enrolled.coursesCount}} courses.</md-subheader>
-        <md-list-item class="md-2-line" ng-click="null" ng-repeat="list in vm.enrolled.enrolledList">
+        <md-list-item class="md-2-line" ng-click="null" ng-repeat="list in vm.enrolled">
           <div class="md-list-item-text">
             <div style="float: left;">
               <h3>{{list.name}}</h3>
               <p>{{list.enrolled}}</p>
             </div>
             <div style="float:right;">
-              <md-button class="md-warn" ng-click="vm.add(list.id)">Add</md-button>
+              <md-button class="md-warn" ng-click="vm.add($event, list)">Add</md-button>
             </div>
           </div>
         </md-list-item>
@@ -38,8 +38,8 @@
     <div flex="5">
     </div>
     <div flex='70' style="height: 550px;">
-      <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' week-starts-on="firstDayOfWeek" data-start-month="8" data-start-year="2014"
-          tooltips="tooltips" day-format="dayFormat" day-label-format="'EEE'" day-label-tooltip-format="'EEEE'" day-tooltip-format="'fullDate'" day-content="setDayContent" disable-future-selection="false">
+      <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='vm.selectedDate' week-starts-on="vm.firstDayOfWeek"
+          tooltips="tooltips" day-format="vm.dayFormat" day-label-format="'EEE'" day-label-tooltip-format="'EEEE'" day-tooltip-format="'fullDate'" day-content="vm.setDayContent" disable-future-selection="false">
       </calendar-md>
     </div>
   </div>
