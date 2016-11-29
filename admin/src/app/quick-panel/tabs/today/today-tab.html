@@ -24,15 +24,25 @@
 
   <md-list-item class="md-2-line" ng-repeat="todo in vm.todos">
     <div class="md-list-item-text">
-      <md-checkbox ng-click="vm.update(todo._id, todo.status)" ng-model="todo.status"></md-checkbox>
-      <div ng-class="{strike: todo.status}">
-        <h3>{{todo.title}}</h3>
-        <p>{{todo.description}}</p>
-        <strong>Target: </strong> {{todo.target}}
-      </div>
+      <table>
+        <tr>
+          <td>
+            <md-checkbox ng-click="vm.update(todo._id, todo.status)" ng-model="todo.status"></md-checkbox>
+          </td>
+          <td width="80%">
+            <div ng-class="{strike: todo.status}">
+              <h3>{{todo.title}}</h3>
+              <p>{{todo.description}}</p>
+              <strong>Target: </strong> {{todo.target | date}}
+            </div>
+          </td>
+          <td>
+            <md-button class="md-fab md-mini md-warn" ng-click="vm.delete(todo._id)"> X </md-button>
+          </td>
+        </tr>
+      </table>
     </div>
     <!-- <span class="delete" ng-click="vm.delete(todo.id)"> X </span> -->
-    <md-button class="md-fab md-mini md-warn" ng-click="vm.delete(todo._id)"> X </md-button>
   </md-list-item>
 </md-list>
 

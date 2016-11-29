@@ -1,0 +1,30 @@
+<md-dialog aria-label="Manage Schedule" style="width: 900px; height: 1200px">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Manage Schedule for {{vm.item.name}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.cancel()">
+          <md-icon md-svg-src="assets/angular-material-assets/img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h3>Please select the start and end date for having marking the schedule for this particualr course.</h3>
+        <br>
+        <md-datepicker ng-model="vm.schedule.startDate" md-min-date="vm.minDate" md-placeholder="Start Date" class="md-block"></md-datepicker>
+        <md-datepicker ng-model="vm.schedule.endDate" md-min-date="vm.schedule.startDate" md-placeholder="End Date" class="md-block"></md-datepicker>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="vm.cancel()">
+        Cancel
+      </md-button>
+      <md-button ng-click="vm.add()">
+        Add
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

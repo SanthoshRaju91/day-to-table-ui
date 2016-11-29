@@ -166,6 +166,10 @@
         });
     }
 
+    /**
+     * Function to show toast message.
+     * @method: showToast
+     */
     function showToast(message) {
       $mdToast.show($mdToast.simple().textContent(message));
     }
