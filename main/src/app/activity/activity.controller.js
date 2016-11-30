@@ -42,17 +42,26 @@
             'iconClass': 'icon_set_1_icon-83',
             name: activity.duration
           });
-          vm.isBookingAvailable = (response.data.activityStatus.toUpperCase() == 'OPEN') ? true : false;
+          vm.isBookingAvailable = (activity.status.toUpperCase() === 'A') ? true : false;
         }
       }, function(err) {
         $log.error(err);
       });
 
-    $scope.$watchGroup(['adultCount', 'childrenCount'], function(newValues) {
+
+
+    /**
+     * Watch for adult and children count.
+     */
+    $scope.$watchGroup([function() {
+      return vm.adultCount;
+    }, function() {
+      return vm.childrenCount;
+    }], function(newValue, oldValue) {
       if (vm.adultCount || vm.childrenCount) {
         vm.isBookingAvailable = true;
       }
-      vm.count = parseInt(newValues[0]) + parseInt(newValues[1]) || 0;
+      vm.count = parseInt(newValue[0]) + parseInt(newValue[1]) || 0;
     });
 
     /**
@@ -61,12 +70,12 @@
      */
     vm.increment = function(type) {
       if (type === 'adult') {
-        if ($scope.adultCount < 10) {
-          $scope.adultCount++;
+        if (vm.adultCount < 10) {
+          vm.adultCount++;
         }
       } else {
-        if ($scope.childrenCount < 10) {
-          $scope.childrenCount++;
+        if (vm.childrenCount < 10) {
+          vm.childrenCount++;
         }
       }
     }
@@ -77,12 +86,12 @@
      */
     vm.decrement = function(type) {
       if (type === 'adult') {
-        if ($scope.adultCount > 0) {
-          $scope.adultCount--;
+        if (vm.adultCount > 0) {
+          vm.adultCount--;
         }
       } else {
-        if ($scope.childrenCount > 0) {
-          $scope.childrenCount--;
+        if (vm.childrenCount > 0) {
+          vm.childrenCount--;
         }
       }
     }
@@ -100,7 +109,7 @@
           firstName: vm.firstName,
           lastName: vm.lastName,
           telephone: vm.telephone,
-          activityID: vm.activity.activityID,
+          activityID: vm.activity._id.$oid,
           adultCount: vm.adultCount,
           childrenCount: vm.childrenCount
         };

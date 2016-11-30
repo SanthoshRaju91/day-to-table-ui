@@ -43,11 +43,13 @@
       var payload = {};
       RestService.delete('logoff', payload)
         .then(function(response) {
-          AuthService.logOut();
-          vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
-          vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
-          // navigating to landing page
-          $location.path('/');
+          if(response.data.success) {
+            AuthService.logOut();
+            vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
+            vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
+            // navigating to landing page
+            $location.path('/');
+          }          
         }, function(err) {
           $log.error(err);
         });

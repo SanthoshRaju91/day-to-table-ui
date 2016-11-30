@@ -46,13 +46,13 @@
      */
     RestService.get('categories')
       .then(function(response) {
-        if (response.data) {
+        if (response.data.success) {
           var categories = [];
-          for (var i = 0; i < response.data.categoryList.length; i++) {
+          for (var i = 0; i < response.data.categories.length; i++) {
             var obj = {};
-            obj.categoryID = response.data.categoryList[i].categoryID;
-            obj.iconClass = iconsArray[response.data.categoryList[i].categoryName.toUpperCase()];
-            obj.categoryName = response.data.categoryList[i].categoryName;
+            obj.categoryID = response.data.categories[i].categoryID;
+            obj.iconClass = iconsArray[response.data.categories[i].categoryName.toUpperCase()];
+            obj.categoryName = response.data.categories[i].categoryName;
             categories.push(obj);
           }
           vm.categories = categories;
@@ -130,8 +130,8 @@
             if (response.data.isMore) {
               vm.showMoreAvaiable = true;
             }
-            vm.count = response.data.count;
-            vm.activities = response.data.activityList;
+            vm.count = response.data.activities.length || 0;
+            vm.activities = response.data.activities;
           }
         }, function(err) {
           $log.error(err);
