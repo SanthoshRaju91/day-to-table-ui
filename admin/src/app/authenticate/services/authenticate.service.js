@@ -11,9 +11,10 @@
     var user = this;
 
     var authenticateRoutes = {
-      'A': ['app.manage', 'app.activity', 'app.course', 'app.messages', 'app.access', 'app.dashboard', 'app.profile'],
-      'SU': ['app.manage', 'app.activity', 'app.course', 'app.messages', 'app.dashboard', 'app.profile'],
-      'U': ['app.manage', 'app.messages', 'app.profile']
+      //'app.messages'
+      'A': ['app.manage', 'app.activity', 'app.course', 'app.access', 'app.dashboard', 'app.profile'],
+      'SU': ['app.manage', 'app.activity', 'app.course', 'app.dashboard', 'app.profile'],
+      'U': ['app.manage', 'app.profile']
     };
 
     user.name = function() {

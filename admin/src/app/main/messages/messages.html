@@ -1,67 +1,128 @@
-<section class="messages">
-  <!-- HEADER-->
-  <div class="header md-accent-bg layout-align-space-between-stretch layout-row" layout="row" layout-align="space-between">
-    <div layout="column" layout-align="center start" class="layout-align-center-start layout-column">
-      <div class="title ng-binding">
-        <span class="logo-icon">
-          <md-icon md-font-icon="icon-email" class="icon md-default-theme md-font material-icons icon-email" aria-hidden="true"></md-icon>
-        </span>
-        <span class="logo-text">Mailbox</span>
-        <h5>santhoshraju@adbc.com</h5>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONTENT -->
-  <!-- <div layout="row">
-    <div flex="5">
-    </div>
-    <div flex>
-      <ms-card template="'app/main/messages/templates/card-message.html'"></ms-card>
-    </div>
-    <div flex="5">
-    </div>
-  </div> -->
-  <div layout="column" ng-cloak>
-    <section layout="row" flex>
-      <md-sidenav class="md-sidenav-left sidenav" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" ms-scroll ms-sidenav-helper>
-        <md-content layout-padding>
-          <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button class="md-accent md-raised md-hue-1">
-              Compose
-            </md-button>
-          </section>
-          <p hide show-gt-md>
-            This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
-          </p>
-        </md-content>
-      </md-sidenav>
-      <md-content flex layout-padding>
-        <div layout="column" layout-align="top center">
-          <md-toolbar class="md-hue-2">
-            <md-button class="md-icon-button" aria-label="Favorite">
-              <md-icon md-svg-icon="assets/angular-material-assets/img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="More">
-              <md-icon md-svg-icon="assets/angular-material-assets/img/icons/more_vert.svg"></md-icon>
-            </md-button>
-          </md-toolbar>
-          <p>
-            The right sidenav will focus on a specific child element.
-          </p>
-          <div>
-            <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
-              Toggle left
-            </md-button>
-          </div>
-          <div>
-            <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary">
-              Toggle right
-            </md-button>
+<md-content id="content" class="animate-slide-up md-hue-2 ms-scroll ng-scope _md md-default-theme flex ps-container ps-theme-default" ms-scroll>
+  <div id="mail" class="page-layout carded left-sidenav layout-row">
+    <div class="top-bg md-accent-bg"></div>
+    <!-- Start of message center menu sidenav bar -->
+    <md-sidenav class="sidenav md-closed ms-scroll ng-scope ng-isolate-scope _md md-default-theme ps-container ps-theme-default md-locked-open" md-is-locked-open="$mdMedia('gt-md')" md-component-id="main-sidenav" ms-scroll ms-sidenav-helper>
+      <div class="header ng-scope layout-align-space-between-start layout-column" layout="column" layout-align="space-between start">
+        <div class="logo layout-align-start-center layout-row" layout="row" layout-align="start center"><span class="logo-icon"><md-icon md-font-icon="icon-email" class="icon md-default-theme md-font material-icons icon-email" aria-hidden="true"></md-icon></span>
+          <span class="logo-text ng-scope">Mailbox</span>
+        </div>
+        <div class="account">
+          <div class="title">
+            <h3>{{vm.fullname}}</h3>
           </div>
         </div>
-        <div flex></div>
+        <div class="account">
+          <div class="email">
+            <h3><strong>{{vm.user.email}}</strong></h3>
+          </div>
+        </div>
+      </div>
+      <md-content ms-scroll class="content ms-scroll ng-scope _md md-default-theme flex ps-container ps-theme-default ps-active-y">
+        <div class="compose-button">
+          <button class="md-accent md-raised md-button ng-scope md-default-theme md-ink-ripple" type="button" aria-label="compose" ng-click="vm.composeDialog($event)">COMPOSE</button>
+        </div>
+        <div class="navigation-simple layout-column" layout="column">
+          <button class="item md-button ng-scope md-default-theme md-ink-ripple selected" type="button" aria-label="inbox" ng-click="vm.loadFolder(folder.name)">
+            <div layout="row" layout-align="start center" class="ng-scope layout-align-start-center layout-row">
+              <md-icon md-font-icon="icon-inbox" class="s16 md-default-theme md-font material-icons icon-inbox" aria-hidden="true"></md-icon>
+              <span class="title ng-binding">Inbox</span>
+            </div>
+          </button>
+          <button class="item md-button ng-scope md-default-theme md-ink-ripple" type="button" aria-label="inbox" ng-click="vm.loadFolder(folder.name)" ng-class="{'selected':vm.isFolderActive(folder.name)}">
+            <div layout="row" layout-align="start center" class="ng-scope layout-align-start-center layout-row">
+              <md-icon md-font-icon="icon-send" class="s16 md-default-theme md-font material-icons icon-send" aria-hidden="true"></md-icon>
+              <span class="title ng-binding">Sent</span>
+            </div>
+          </button>
+        </div>
       </md-content>
-    </section>
+    </md-sidenav>
+    <!-- end of message center menu sidenav bar -->
+
+    <!-- start of message center thread display and content display -->
+    <div class="center layout-column flex" layout="column" flex>
+      <div class="content-card ng-scope outlook layout-column flex">
+        <!-- start of message center toolbar -->
+        <div class="toolbar ng-scope layout-align-space-between-center layout-row" layout="row" layout-align="space-between center">
+        </div>
+        <!-- end of message center toolbar -->
+        <div class="content-wrapper ng-scope layout-row flex" layout="row">
+            <!-- Start of messages thread menu -->
+            <div class="content thread-list ms-scroll ng-scope flex-50 ps-container ps-theme-default ps-active-y" ms-scroll flex="50">
+              <div class="thread" md-ink-ripple ng-repeat="message in vm.messages track by $index" ng-class="{'unread': !message.read, 'current-thread selected': vm.isSelected(message, $index)}" ng-click="vm.openThread(message, $index)">
+                <div class="layout-align-start-center layout-row" layout="row" layout-align="start center">
+                  <md-checkbox class="no-label md-default-theme" aria-label="Select" type="checkbox" role="checkbox" aria-checked="false">
+                    <div class="md-container md-ink-ripple" md-ink-ripple="" md-ink-ripple-checkbox="">
+                      <div class="md-icon"></div>
+                    </div>
+                  </md-checkbox>
+                  <div class="info layout-column flex" flex layout="column">
+                    <div class="name layout-align-start-center layout-row" layout="row" layout-align="start center">
+                      <img class="avatar ng-scope" alt="Alice Freeman" src="assets/images/avatars/alice.jpg" src="assets/images/avatars/alice.jpg">
+                      <span class="text-truncate ng-binding">{{message.from}}</span>
+                    </div>
+                    <div class="subject text-truncate ng-binding">{{message.subject}}</div>
+                    <div layout="column" layout-align="space-between end" class="layout-align-space-between-end layout-column">
+                      <div class="time ng-binding">{{message.date | date}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="md-ripple-container"></div>
+              </div>
+            </div>
+            <!-- End of messages thread menu -->
+            <!-- Start of message content space displaying the selected message -->
+            <div class="content thread-detail ms-scroll ng-scope layout-column flex-50 ps-container ps-theme-default" ms-scroll layout="column" flex="50">
+              <div class="ng-scope" ng-if="vm.currentThread">
+                <div class="thread-header layout-align-space-between-center layout-row" layout="row" layout-align="space-between center">
+                  <div>
+                    <div class="subject ng-binding flex" flex>
+                      Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                  </div>
+                </div>
+                <div class="thread-content">
+                  <div class="info layout-align-space-between-start layout-row" layout="row" layout-align="space-between start">
+                    <div class="layout-align-start-start layout-column" layout-align="start start" layout="column">
+                      <div class="layout-align-start-start layout-row" layout-align="start start" layout="row">
+                        <div>
+                          <img alt="Lawrence Collins" src="assets/images/avatars/vincent.jpg" class="avatar ng-scope" src="assets/images/avatars/vincent.jpg">
+                        </div>
+                        <div layout="column" layout-align="start start" class="layout-align-start-start layout-column">
+                          <div class="name ng-binding">Lawrence Collins</div>
+                          <div class="to layout-align-start-center layout-row" layout="row" layout-align="start center">
+                            <div class="to-text ng-scope">to</div>
+                            <div class="ng-binding">me</div>
+                          </div>
+
+                          <div class="details layout-align-start-start layout-row" layout="row" layout-align="start start" aria-hidden="false">
+                            <div layout="column" class="layout-column">
+                              <span class="title ng-scope">From:</span>
+                              <span class="title ng-scope">To:</span>
+                              <span class="title ng-scope">Date:</span>
+                            </div>
+                            <div layout="column" class="layout-column">
+                              <span class="detail ng-binding">lawrencecollins@creapond.com</span>
+                              <span class="detail ng-binding">johndoe@creapond.com</span>
+                              <span class="detail ng-binding">28 Jun</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <md-button class="md-raised md-warn" ng-click="vm.reply()">Reply</md-button>
+                  </div>
+                  <div class="ng-binding">
+                    <p> In eget ante sapien. Quisque consequat velit non ante finibus, vel placerat erat ultricies. Aliquam bibendum justo erat, ultrices vehicula dolor elementum a. Mauris eu nisl feugiat ligula molestie eleifend. Aliquam efficitur venenatis velit ac porta. Vivamus vitae pulvinar tellus. Donec odio enim, auctor eget nibh mattis, ultricies dignissim lacus. Phasellus non tincidunt dui. Nulla eu arcu lorem. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End of message content space displaying the selected message -->
+        </div>
+      </div>
+    </div>
+    <!-- end of message center thread display and content display -->
   </div>
-</section>
+</md-content>
