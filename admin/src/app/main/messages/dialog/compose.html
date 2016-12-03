@@ -1,0 +1,40 @@
+<md-dialog class="compose-dialog _md md-default-theme md-content-overflow md-transition-in" aria-label="{{vm.title}}" role="dialog" style="width: 720px;">
+  <form class="md-inline-form ng-pristine ng-valid ng-valid-email">
+    <md-toolbar class="md-accent md-hue-2 _md md-default-theme _md-toolbar-transitions">
+      <div class="md-toolbar-tools layout-align-space-between-center layout-row" layout="row" layout-align="space-between center">
+        <span class="title ng-scope">{{vm.title}}</span>
+        <button class="md-icon-button md-button md-ink-ripple md-default-theme" type="button" ng-click="vm.cancel()" aria-label="Close dialog">
+          <md-icon md-font-icon="icon-close" class="ng-scope md-font material-icons icon-close md-default-theme" aria-hidden="true"></md-icon>
+        </button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content ms-scroll class="ms-scroll ps-container ps-theme-default ps-active-y">
+      <md-input-container class="md-block md-default-theme md-input-has-value">
+        <label class="ng-scope">From</label>
+        <input ng-model="vm.message.from" type="email" disabled="disabled" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty ng-valid-email" aria-invalid="false">
+        <div class="md-errors-spacer"></div>
+      </md-input-container>
+      <md-input-container class="md-block to md-default-theme" style="">
+        <label class="ng-scope">To</label>
+        <input ng-model="vm.message.to" type="email" ng-disabled="vm.disableTo" md-autofocus="" class="ng-pristine ng-valid md-input md-autofocus ng-empty ng-valid-email ng-touched" aria-invalid="false" />
+        <div class="md-errors-spacer"></div>
+      </md-input-container>
+      <md-input-container class="md-block md-default-theme">
+        <label class="ng-scope">Subject</label>
+        <input ng-model="vm.message.subject" type="text" ng-disabled="vm.disableSubject" class="ng-pristine ng-untouched ng-valid md-input ng-empty" aria-invalid="false">
+        <div class="md-errors-spacer"></div>
+      </md-input-container>
+      <!-- <text-angular ng-model="vm.message.body"></text-angular> -->
+    </md-dialog-content>
+    <md-dialog-actions class="layout-align-space-between-center layout-row" layout="row" layout-align="space-between center">
+      <div class="layout-align-start-center layout-row" layout="row" layout-align="start center">
+        <button class="send-button md-accent md-raised md-button ng-scope md-ink-ripple md-default-theme" type="button" ng-click="vm.send()" aria-label="Send">Send</button>
+      </div>
+      <div layout="row" class="layout-row">
+        <button class="md-icon-button md-button md-ink-ripple md-default-theme" type="button" aria-label="Delete" >
+          <md-icon md-font-icon="icon-delete" class="ng-scope md-font material-icons icon-delete md-default-theme" aria-hidden="true"></md-icon>
+        </button>
+      </div>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
