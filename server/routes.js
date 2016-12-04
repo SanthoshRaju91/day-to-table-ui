@@ -12,6 +12,7 @@ var router = express.Router();
 var login = require('./mock/common/login.js');
 var activities = require('./mock/activity/activities');
 var activity = require('./mock/activity/activity');
+var categories = require('./mock/common/categories');
 
 router.post('/login', function(req, res) {
     res.json(login);
@@ -22,10 +23,7 @@ router.get('/activities', function(req, res) {
 });
 
 router.get('/categories', function(req, res) {
-    res.json({
-        success: true,
-        categories: []
-    });
+    res.json(categories);
 });
 
 router.get('/activity/:id', function(req, res) {

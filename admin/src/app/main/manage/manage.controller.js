@@ -67,7 +67,7 @@
     /**
      * Rest call service to ge the enrolled courses for the user
      */
-    RestService.get('courses/enrolled_courses/' + user._id)
+    RestService.get('courses/enrolled_courses/' + user.id)
       .then(function(response) {
         if (response.data) {
           vm.enrolled = response.data.enrolled;
@@ -85,7 +85,7 @@
      */
 
     function fetchSchedule() {
-      var id = user._id;
+      var id = user.id;
 
       RestService.get('user-schedule/' + id)
         .then(function(response) {

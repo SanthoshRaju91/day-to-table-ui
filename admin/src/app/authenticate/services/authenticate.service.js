@@ -12,9 +12,9 @@
 
     var authenticateRoutes = {
       //'app.messages'
-      'A': ['app.manage', 'app.activity', 'app.course', 'app.access', 'app.dashboard', 'app.profile'],
+      'A': ['app.messages', 'app.manage', 'app.activity', 'app.course', 'app.access', 'app.dashboard', 'app.profile'],
       'SU': ['app.messages', 'app.manage', 'app.activity', 'app.course', 'app.dashboard', 'app.profile'],
-      'U': ['app.manage', 'app.profile']
+      'U': ['app.messages', 'app.manage', 'app.profile']
     };
 
     user.name = function() {
