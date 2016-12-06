@@ -125,10 +125,12 @@
     function showToastr(message) {
       toastrConfig.positionClass = 'toast-bottom-left';
       toastrConfig.maxOpened = 10;
+      toastrConfig.containerId = 'toast-container';
       toastrConfig.newestOnTop = true;
       toastrConfig.preventDuplicates = false;
       toastrConfig.preventOpenDuplicates = false;
       toastrConfig.timeOut = 10000;
+      toastrConfig.target = 'body';
       toastr.error(message, 'error')
     }
     return rest;

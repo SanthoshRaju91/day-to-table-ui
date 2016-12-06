@@ -72,6 +72,7 @@
 
     function showToast(message, type) {
       toastrConfig.positionClass = 'toast-top-left';
+      toastrConfig.containerId = 'toast-container';
       toastr[type](message);
     }
   }
