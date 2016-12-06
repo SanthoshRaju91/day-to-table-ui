@@ -219,3 +219,7 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
 .custom-top-style {
   top: 10em;
 }
+
+#toast-container {
+  z-index: 9999;
+}
