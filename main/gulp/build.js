@@ -96,12 +96,12 @@ gulp.task('clean', function () {
 
 gulp.task('custom:vendor', function() {
   return gulp.src(conf.paths.custom.vendor)
-    .pipe(gulp.dest('../custom/vendor'));
+    .pipe(gulp.dest(conf.paths.dist + '/vendor'));
 });
 
 gulp.task('custom:img', function() {
   return gulp.src(conf.paths.custom.img)
-    .pipe(gulp.dest('../custom/img'));
+    .pipe(gulp.dest(conf.paths.dist + '/img'));
 });
 
 gulp.task('custom', ['custom:vendor', 'custom:img']);
