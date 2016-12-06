@@ -52,7 +52,7 @@
                 ariaDescribedBy: '',
                 templateUrl: 'app/register/dialog/modal-content.html',
                 controller: 'ModalInstanceController as vm',
-                appendTo: angular.element(document.body),
+                appendTo: angular.element(document.body)
               }).result.then(function() {
                 $location.path('/');
               });

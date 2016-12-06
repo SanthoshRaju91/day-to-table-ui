@@ -35,7 +35,7 @@
             showToast('Login not succesfull. Please try again', 'error');
           }
         }, function(err) {
-          showToast(err.data.errors, 'error');
+          showToast(err.data.errors[0], 'error');
           $log.error(err);
         });
     };
@@ -71,7 +71,7 @@
     };
 
     function showToast(message, type) {
-      toastrConfig.positionClass = 'toast-top-left';      
+      toastrConfig.positionClass = 'toast-top-left';
       toastr[type](message);
     }
   }

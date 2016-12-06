@@ -57,7 +57,7 @@
       return vm.adultCount;
     }, function() {
       return vm.childrenCount;
-    }], function(newValue, oldValue) {
+    }], function(newValue) {
       if (vm.adultCount || vm.childrenCount) {
         vm.isBookingAvailable = true;
       }

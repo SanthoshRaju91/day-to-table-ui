@@ -73,6 +73,6 @@
     toastrConfig.preventDuplicates = false;
     toastrConfig.preventOpenDuplicates = false;
     toastrConfig.target = 'body';
-    toastrConfig.containerId = 'toast-container';    
+    toastrConfig.containerId = 'toast-container';
   }
 })();
