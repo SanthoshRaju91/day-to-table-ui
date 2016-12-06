@@ -7,7 +7,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService, AuthService)
+    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $window, $location, $mdToast, msNavigationService, AuthService, RestService)
     {
         var vm = this;
         vm.user = {};
@@ -118,7 +118,16 @@
          */
         function logout()
         {
-            // Do logout here..
+          RestService.delete('logoff')
+            .then(function(response) {
+              if(response && response.success) {
+                AuthService.logout();
+                $window.localStorage = $location.host();
+              }
+            }, function(err) {
+              $log.error('Error in logging out the user' + err);
+                $mdToast.show($mdToast.simple().textContent('Could not log you out. Please try again'));
+            })
         }
 
         /**

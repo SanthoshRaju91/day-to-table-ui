@@ -9,10 +9,11 @@ var router = express.Router();
  * Routes mock data config imports
  */
 
-var login = require('./mock/common/login.js');
+var login = require('./mock/common/login');
 var activities = require('./mock/activity/activities');
 var activity = require('./mock/activity/activity');
 var categories = require('./mock/common/categories');
+var logout = require('./mock/common/logout');
 
 router.post('/login', function(req, res) {
     res.json(login);
@@ -31,9 +32,7 @@ router.get('/activity/:id', function(req, res) {
 });
 
 router.delete('/logoff', function(req, res) {
-    res.json({
-        success: true
-    });
+    res.json(logout);
 });
 
 module.exports = router;
