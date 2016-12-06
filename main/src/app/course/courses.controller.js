@@ -15,6 +15,7 @@
     //Data
     vm.page = 1;
     vm.showMoreAvaiable = false;
+
     var iconsArray = {
       MUSIC: 'icon-music-3',
       DANCE: 'icon-pitch',
@@ -24,6 +25,7 @@
       CRICKET: 'icon-cricket',
       SAMPLE: 'icon-music-3'
     };
+
     vm.priceList = [{
       id: 'lowest,price',
       name: 'Lowest price'
@@ -45,9 +47,10 @@
      */
     RestService.get('categories')
       .then(function(response) {
-        if (response.data) {
+        if (response && response.data.success) {
           var categories = categoriesSerializer(response.data.categories);
           vm.categories = categories;
+          getCourses(vm.pageNo);
         }
       }, function(err) {
         $log.error(err);

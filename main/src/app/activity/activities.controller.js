@@ -48,7 +48,7 @@
     RestService.get('categories')
       .then(function(response) {
         if (response.data.success) {
-          let categories = categoriesSerializer(response.data.categories);
+          var categories = categoriesSerializer(response.data.categories);
           vm.categories = categories;
           getActivities(vm.pageNo);
         }
