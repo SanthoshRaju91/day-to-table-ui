@@ -9,12 +9,11 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(AuthService, RestService, $log, $location) {
+  function MainController(AuthService, RestService, $log, $location, toastr, toastrConfig) {
     var vm = this;
-
     // Data
     vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
-    vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
+    vm.fullName = AuthService.getFullName();
 
     // methods
     /**
@@ -27,10 +26,16 @@
           password: vm.password
         })
         .then(function(response) {
-          AuthService.logIn(response.data.token, response.data.user.role, angular.toJson(response.data.user));
-          vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
-          vm.fullName = AuthService.getFullName();
+          if(response && response.data.success) {
+            AuthService.logIn(response.data.token, response.data.user.role, angular.toJson(response.data.user));
+            vm.isAuthenticated = (AuthService.isAuthenticated()) ? true : false;
+            vm.fullName = AuthService.getFullName();
+            showToast('Logged in', 'success');
+          } else {
+            showToast('Login not succesfull. Please try again', 'error');
+          }
         }, function(err) {
+          showToast(err.data.errors, 'error');
           $log.error(err);
         });
     };
@@ -49,8 +54,10 @@
             vm.fullName = (AuthService.isAuthenticated()) ? AuthService.getUserDetails().first_name + " " + AuthService.getUserDetails().last_name : '';
             // navigating to landing page
             $location.path('/');
-          }          
+            showToast('Logged out succefully', 'success');
+          }
         }, function(err) {
+          showToast('Logoff was not successful. Please try again', 'error');
           $log.error(err);
         });
     };
@@ -63,5 +70,9 @@
       $location.path('register');
     };
 
+    function showToast(message, type) {
+      toastrConfig.positionClass = 'toast-top-left';      
+      toastr[type](message);
+    }
   }
 }());

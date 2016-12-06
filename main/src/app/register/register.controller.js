@@ -6,10 +6,24 @@
   'use strict';
 
   angular.module('app.register.controller', ['ui.bootstrap'])
-    .controller('RegisterController', RegisterController);
+    .controller('RegisterController', RegisterController)
+    .controller('ModalInstanceController', ModalInstanceController);
 
   /** @ngInject */
-  function RegisterController(RestService, AuthService, $log, $location) {
+  function ModalInstanceController($uibModalInstance) {
+    var vm = this;
+
+    /**
+    * Function to dismiss the dialog.
+    * @method: ok
+    */
+    vm.ok = function() {
+      $uibModalInstance.close('done');
+    }
+  }
+
+  /** @ngInject */
+  function RegisterController(RestService, AuthService, $log, $location, $uibModal) {
 
     var vm = this;
     vm.isError = false;
@@ -30,8 +44,18 @@
 
         RestService.post('register', payload)
           .then(function(response) {
-            if (response.data) {
-              $location.path('/');
+            if (response && response.data.success) {
+              $uibModal.open({
+                animation: true,
+                windowClass: 'custom-top-style',
+                ariaLabelledBy: 'Registration',
+                ariaDescribedBy: '',
+                templateUrl: 'app/register/dialog/modal-content.html',
+                controller: 'ModalInstanceController as vm',
+                appendTo: angular.element(document.body),
+              }).result.then(function() {
+                $location.path('/');
+              });
             } else {
               $log.error(response.data.message);
               vm.isError = true;

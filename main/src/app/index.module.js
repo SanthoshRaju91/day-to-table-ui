@@ -62,8 +62,17 @@
     ])
     .config(config);
 
-    /** @ngInject */
-    function config($httpProvider) {
-      $httpProvider.interceptors.push('AuthInterceptor');
-    }
+  /** @ngInject */
+  function config($httpProvider, toastrConfig) {
+    // configuration for http auth interceptors
+    $httpProvider.interceptors.push('AuthInterceptor');
+
+    //configuration for angular toastr
+    toastrConfig.maxOpened = 10;
+    toastrConfig.newestOnTop = true;
+    toastrConfig.preventDuplicates = false;
+    toastrConfig.preventOpenDuplicates = false;
+    toastrConfig.target = 'body';
+    toastrConfig.containerId = 'toast-container';    
+  }
 })();

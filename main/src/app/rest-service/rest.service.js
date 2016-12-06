@@ -9,11 +9,11 @@
     .service('RestService', RestService);
 
   /** @ngInject */
-  function RestService($http, $q, $location) {
+  function RestService($http, $q, $location, toastrConfig, toastr) {
     var rest = this;
 
-    rest.url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/v1/';
-    // rest.url = 'http://127.0.0.1:8080/api/v1/';
+    // rest.url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/v1/';
+    rest.url = 'http://127.0.0.1:8080/api/v1/';
 
     /**
      * Function returing the end point url
@@ -38,9 +38,11 @@
             if (response && response.data.success) {
               resolve(response);
             } else {
+              showToastr('Something went wrong while fetching data from database. Please contactg your admin');
               reject(response);
             }
           }, function(err) {
+            showToastr('Something went wrong while fetching data from database. Please contactg your admin');
             reject(err);
           });
       });
@@ -61,9 +63,11 @@
             if (response && response.data.success) {
               resolve(response);
             } else {
+              showToastr('Something went wrong while processing data in backend. Please contactg your admin');
               reject(response);
             }
           }, function(err) {
+            showToastr('Something went wrong while processing data in backend. Please contactg your admin');
             reject(err);
           });
       });
@@ -84,9 +88,11 @@
             if (response && response.data.success) {
               resolve(response);
             } else {
+              showToastr('Something went wrong while processing data in backend. Please contactg your admin');
               reject(response);
             }
           }, function(err) {
+            showToastr('Something went wrong while processing data in backend. Please contactg your admin');
             reject(err);
           });
       });
@@ -110,14 +116,25 @@
             if (response && response.data.success) {
               resolve(response);
             } else {
+              showToastr('Something went wrong while processing data in backend. Please contactg your admin');
               reject(response);
             }
           }, function(err) {
+            showToastr('Something went wrong while processing data in backend. Please contactg your admin');
             reject(err);
           })
       });
     }
 
+    function showToastr(message) {
+      toastrConfig.positionClass = 'toast-bottom-left';
+      toastrConfig.maxOpened = 10;
+      toastrConfig.newestOnTop = true;
+      toastrConfig.preventDuplicates = false;
+      toastrConfig.preventOpenDuplicates = false;
+      toastrConfig.timeOut = 10000;
+      toastr.error(message, 'error')
+    }
     return rest;
   }
 }());

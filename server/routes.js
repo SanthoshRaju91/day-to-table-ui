@@ -14,6 +14,7 @@ var activities = require('./mock/activity/activities');
 var activity = require('./mock/activity/activity');
 var categories = require('./mock/common/categories');
 var logout = require('./mock/common/logout');
+var register = require('./mock/common/register');
 
 router.post('/login', function(req, res) {
     res.json(login);
@@ -35,4 +36,10 @@ router.delete('/logoff', function(req, res) {
     res.json(logout);
 });
 
+router.post('/register', function(req, res) {
+  if(req.body) {
+    console.info(req.body);
+    res.json(register);
+  }
+})
 module.exports = router;
