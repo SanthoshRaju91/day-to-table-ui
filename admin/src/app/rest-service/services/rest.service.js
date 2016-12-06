@@ -9,8 +9,8 @@
   function RestService($http, $q, $location) {
     var rest = this;
 
-    rest.url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/v1/';
-    // rest.url = 'http://localhost:8080/api/v1/';
+    // rest.url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/v1/';
+    rest.url = 'http://localhost:8080/api/v1/';
     /**
      * Function returning rest end point
      * @method: endPoint

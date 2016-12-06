@@ -122,7 +122,7 @@
             .then(function(response) {
               if(response && response.data.success) {
                 AuthService.logout();
-                $window.location.href = $location.host();
+                $window.location.href = '/';
               }
             }, function(err) {
               $log.error('Error in logging out the user' + err);
