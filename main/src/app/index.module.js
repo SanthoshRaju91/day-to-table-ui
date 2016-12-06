@@ -59,5 +59,11 @@
 
       // app.modal-component
       'app.modal-component'
-    ]);
+    ])
+    .config(config);
+
+    /** @ngInject */
+    function config($httpProvider) {
+      $httpProvider.interceptors.push('AuthInterceptor');
+    }
 })();

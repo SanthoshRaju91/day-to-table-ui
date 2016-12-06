@@ -7,7 +7,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $window, $location, $mdToast, msNavigationService, AuthService, RestService)
+    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $window, $location, $mdToast, msNavigationService, AuthService, RestService, $log)
     {
         var vm = this;
         vm.user = {};
