@@ -1,0 +1,33 @@
+<section class="booking-grid">
+  <div class="row">
+    <div class="col-md-2 col-sm-2">
+      <div class="type">
+        <span class="header">V</span>
+        <span class="content">
+          <strong>{{$ctrl.data.reference}}</strong>
+          <a ng-click="$ctrl.goTo()">Reference {{$ctrl.data.bookingReference}}</a>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-5 booking-grid-title">
+      <img class="img-circle" ng-src="{{$ctrl.data.imageUrl}}" width="80" height="80"/>
+      <h3 class="booking-name">
+        {{$ctrl.data.bookingTitle}}
+        <span>{{$ctrl.data.adultCount}} Adults / {{$ctrl.data.childrenCount}} Children</span>
+        <span><b>Price: </b>{{$ctrl.data.totalPrice}}
+      </h3>
+    </div>
+    <div class="col-md-2 col-sm-3">
+      <ul class="info-booking">
+        <li><strong>Booking id</strong> {{$ctrl.data.bookingID}}</li>
+        <li><strong>Booked on</strong> {{$ctrl.data.createDate | date}}</li>
+      </ul>
+    </div>
+    <div class="col-md-2 col-sm-2">
+      <div class="booking-buttons">
+        <span>{{$ctrl.bookingStatus}}</span>
+        <a class="btn-3" ng-hide="$ctrl.isCancelled" ng-click="$ctrl.cancelBooking($ctrl.data.bookingID)">Cancel</a>
+      </div>
+    </div>
+  </div>
+</section>

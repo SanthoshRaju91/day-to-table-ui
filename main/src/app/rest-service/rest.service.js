@@ -12,8 +12,8 @@
   function RestService($http, $q, $location, toastrConfig, toastr) {
     var rest = this;
 
-    // rest.url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/v1/';
-    rest.url = 'http://127.0.0.1:8080/api/v1/';
+    rest.url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/v1/';
+    // rest.url = 'http://127.0.0.1:8080/api/v1/';
 
     /**
      * Function returing the end point url
@@ -37,7 +37,7 @@
           .then(function(response) {
             if (response && response.data.success) {
               resolve(response);
-            } else {            
+            } else {
               reject(response);
             }
           }, function(err) {
