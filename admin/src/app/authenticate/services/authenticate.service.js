@@ -19,6 +19,14 @@
     };
 
     /**
+    * function for returning is authenicated status of the logged in user
+    * @method: isAuthenticated
+    */
+    user.isAuthenticated = function() {
+      return ($window.localStorage.getItem('isAuthenticated')) ? true : false;
+    }
+
+    /**
     * function for returning the logged user full name
     * @method: name
     */
@@ -76,6 +84,7 @@
       $window.localStorage.removeItem('token');
       $window.localStorage.removeItem('profilePicture');
       $window.localStorage.removeItem('userDetails');
+      $window.localStorage.removeItem('isAuthenticated');
     }
 
     return user;

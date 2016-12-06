@@ -120,9 +120,9 @@
         {
           RestService.delete('logoff')
             .then(function(response) {
-              if(response && response.success) {
+              if(response && response.data.success) {
                 AuthService.logout();
-                $window.localStorage = $location.host();
+                $window.location.href = $location.host();
               }
             }, function(err) {
               $log.error('Error in logging out the user' + err);
