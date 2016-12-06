@@ -227,3 +227,12 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
 .toast-content {
   z-index: 9999 !important;
 }
+
+ul li a:hover {
+    text-decoration: none;
+}
+
+.btn_full:hover, .btn_1:hover {
+  text-decoration: none;
+  opacity: 0.5;
+}

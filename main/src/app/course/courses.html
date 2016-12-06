@@ -15,8 +15,8 @@
   			  <ul id="cat_nav">
             <li><a href="" id="active" ng-click="vm.reset()"><i class="icon_set_1_icon-95"></i> All activities</a></li>
             <li ng-repeat = "category in vm.categories">
-              <a href = "" ng-click="vm.applyFilter('category', category.categoryID)">
-                <i class="{{category.iconClass}}"></i> {{category.categoryName}}
+              <a href = "" ng-click="vm.applyFilter('category', category.id)">
+                <i class="{{category.icon}}"></i> {{category.name}}
               </a>
             </li>
     			</ul>

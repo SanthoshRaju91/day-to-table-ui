@@ -21,7 +21,8 @@
       SOCCER: 'icon-soccer',
       SPORTS: 'icon-skiing',
       EDUCATION: 'icon-library',
-      CRICKET: 'icon-cricket'
+      CRICKET: 'icon-cricket',
+      SAMPLE: 'icon-music-3'
     };
     vm.priceList = [{
       id: 'lowest,price',
@@ -45,14 +46,7 @@
     RestService.get('categories')
       .then(function(response) {
         if (response.data) {
-          var categories = [];
-          for (var i = 0; i < response.data.categoryList.length; i++) {
-            var obj = {};
-            obj.categoryID = response.data.categoryList[i].categoryID;
-            obj.iconClass = iconsArray[response.data.categoryList[i].categoryName.toUpperCase()];
-            obj.categoryName = response.data.categoryList[i].categoryName;
-            categories.push(obj);
-          }
+          var categories = categoriesSerializer(response.data.categories);
           vm.categories = categories;
         }
       }, function(err) {
@@ -135,7 +129,25 @@
         }, function(err) {
           $log.error(err);
         });
+    }
 
+    /**
+     * Function for serializing the categories response for rendering ion UI
+     * @method: categoriesSerializer
+     */
+    function categoriesSerializer(categories) {
+      var keys = [];
+      _.forEach(categories, function(current) {
+        var obj = {};
+        var id = Object.keys(current)[0];
+        if (current[id]) {
+          obj['id'] = id;
+          obj['name'] = current[id];
+          obj['icon'] = iconsArray[current[id].toUpperCase()];
+          keys.push(obj);
+        }
+      });
+      return keys;
     }
   }
 }());
