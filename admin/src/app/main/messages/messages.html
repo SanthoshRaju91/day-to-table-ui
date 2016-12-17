@@ -118,8 +118,9 @@
             </div>
           </div>
 
-          <div class="" ng-if="!vm.currentThread">
-
+          <div ng-if="!vm.currentThread" class="no-thread-selected ng-scope layout-align-center-center layout-column flex" layout="column" layout-align="center center" flex="">
+            <md-icon md-font-icon="icon-email" class="s120 grey-400-fg md-default-theme md-font material-icons icon-email" aria-hidden="true"></md-icon>
+            <span class="hint-text ng-scope">Select a message to read</span>
           </div>
         </div>
         <!-- End of message content space displaying the selected message -->

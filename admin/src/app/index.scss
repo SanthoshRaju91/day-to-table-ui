@@ -272,3 +272,12 @@ section {
   margin-left: 15px;
   width: 80%;
 }
+
+#mail .center .content-card.outlook .content-wrapper .thread-detail .no-thread-selected span {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+#mail .center .content-card.outlook .content-wrapper .thread-detail .no-thread-selected md-icon {
+    margin: -56px 0 12px;
+}
