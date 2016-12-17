@@ -3,10 +3,35 @@
 
   angular
     .module('app.activity')
-    .controller('ActivityController', ActivityController);
+    .controller('ActivityController', ActivityController)
+    .controller('ActivityConfirmDialogController', ActivityConfirmDialogController);
+
+  /** @ngInject */
+  function ActivityConfirmDialogController($mdDialog, dataToPass) {
+    var vm = this;
+    vm.details = dataToPass;
+
+    /**
+     * Function to hide the modal when the user clicks on cancel
+     * @method: cancel
+     */
+    vm.cancel = function() {
+      $mdDialog.cancel(false);
+    }
+
+    /**
+     * Function to handle confirm click from the user
+     * @method confirm
+     */
+    vm.confirm = function() {
+      $mdDialog.hide({
+        confirm: true
+      });
+    }
+  }
 
   /** @ngInject*/
-  function ActivityController(ActivityData, RestService, $log, $location, $mdToast) {
+  function ActivityController(ActivityData, RestService, $log, $location, $mdToast, $mdDialog) {
     var vm = this;
     vm.amenities = [];
     vm.languages = [];
@@ -20,11 +45,12 @@
     RestService.get('categories')
       .then(function(response) {
         if (response.data) {
-          vm.categories = response.data.categories;
+          vm.categories = categoriesSerialzers(response.data.categories);
         }
       }, function(err) {
         $log.error(err);
       });
+
 
     /**
      * Function to create a new activity.
@@ -46,21 +72,36 @@
       payload.languages = vm.languages;
       payload.imageURL = vm.activity.image;
       payload.includes = vm.includes;
-      payload.categories = vm.activity.category;
+      payload.category = vm.activity.category;
 
-      RestService.post('activities/new', payload)
-        .then(function(response) {
-          $mdToast.show($mdToast.simple().textContent('New Activited has been created, your activity is now deployed and available on your dashboard screen'));
-          $location.path('/dashboard');
-        }, function(err) {
-          $log.error(err);
-          $mdToast.show($mdToast.simple().textContent('Something went wrong, please try again'));
-        });
+      $mdDialog.show({
+        locals: {
+          dataToPass: payload
+        },
+        controller: 'ActivityConfirmDialogController as vm',
+        templateUrl: 'app/main/activity/dialog/confirm-dialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        fullscreen: true
+      }).then(function(response) {
+        if (response.confirm) {
+          RestService.post('activities/new', payload)
+            .then(function(response) {
+              $mdToast.show($mdToast.simple().textContent('New Activited has been created, your activity is now deployed and available on your dashboard screen'));
+              $location.path('/dashboard');
+            }, function(err) {
+              $log.error(err);
+              $mdToast.show($mdToast.simple().textContent('Something went wrong, please try again'));
+            });
+        }
+      });
     }
 
 
     /**
      * Adding includes to the includes array
+     * @method addIncludes
      */
     vm.addIncludes = function() {
       if (vm.include) {
@@ -68,5 +109,25 @@
         vm.include = '';
       }
     }
+
+    /**
+     * Function to serializing categories
+     * @method categoriesSerialzers
+     */
+    function categoriesSerialzers(catgeories) {
+      var keys = [];
+      _.forEach(categories, function(current) {
+        var obj = {};
+        var id = Object.keys(current)[0];
+        if (current[id]) {
+          obj['id'] = id;
+          obj['name'] = current[id];
+          obj['icon'] = iconsArray[current[id].toUpperCase()];
+          keys.push(obj);
+        }
+      });
+      return keys;
+    }
+
   }
 })();

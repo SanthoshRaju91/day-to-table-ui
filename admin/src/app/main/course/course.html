@@ -16,7 +16,7 @@
     <div flex="5">
     </div>
     <div flex>
-      <form name="course" ms-vertical-stepper ng-submit="vm.submitCourse()" ng-model="vm.course" novalidate>
+      <form name="course" ms-vertical-stepper ng-submit="vm.submitCourse($event)" ng-model="vm.course" novalidate>
         <!-- Course Name -->
         <ms-vertical-stepper-step ng-form="step1" step="1" step-title="'Name of the Course'">
           <md-input-container class="md-block" flex-gt-sm>

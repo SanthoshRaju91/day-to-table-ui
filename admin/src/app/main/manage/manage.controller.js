@@ -77,7 +77,29 @@
         $log.error(err);
         showToast('Something went wrong while fetching your enrolled courses and activities');
       });
+    //
+    // var schedule = [{
+    //       "name": "Soccer",
+    //       "type": "course",
+    //       "date": "2016-12-01"
+    //   }, {
+    //       "name": "Meet up",
+    //       "type": "activity",
+    //       "date": "2016-12-01"
+    //   }];
 
+    // {
+    //   success: true,
+    //   schedule: [{
+    //         "name": "Soccer",
+    //         "type": "course",
+    //         "date": "2016-12-01"
+    //     }, {
+    //         "name": "Meet up",
+    //         "type": "activity",
+    //         "date": "2016-12-01"
+    //     }]
+    // }
 
     /**
      * Function to fetch user schedule
@@ -86,10 +108,9 @@
 
     function fetchSchedule() {
       var id = user.id;
-
       RestService.get('user-schedule/' + id)
         .then(function(response) {
-
+          deserializeSchedule(response.data.schedule);
         }, function(err) {
           $log.error(err);
           showToast('Something went wrong while fetching your schedule. Please contact the admin');
@@ -157,7 +178,7 @@
           if (vm.schedule[key].constructor === Array) {
             _.forEach(vm.schedule[key], function(current, index) {
               if (current) {
-                data += current.name + '<br/><br/>';
+                data += '<strong>'+ current.type + '</strong> : ' + current.name + '<br/><br/>';
               }
             });
           } else {
