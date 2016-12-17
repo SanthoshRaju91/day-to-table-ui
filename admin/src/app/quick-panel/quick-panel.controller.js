@@ -54,6 +54,45 @@
         showToast('Something went wrong in getting your todo list !!');
       });
 
+    /**
+     * Rest call to get user notes
+     */
+
+    $http({
+      method: 'GET',
+      url: host + 'notes/' + user.id
+    }).then(function(response) {
+      if (response && response.data.success) {
+        vm.notes = response.data.notes;
+      } else {
+        $log.error('Error response ' + response);
+        showToast('Something went wrong in getting your notes');
+      }
+    }, function(err) {
+      $log.error(err);
+      showToast('Something went wrong in getting your notes');
+    });
+
+    /**
+     * Function to get a fresh list of notes for the user
+     * @methjod: refreshNotes
+     */
+    function refreshNotes() {
+      $http({
+        method: 'GET',
+        url: host + 'notes/' + user.id
+      }).then(function(response) {
+        if (response && response.data.success) {
+          vm.notes = response.data.notes;
+        } else {
+          $log.error('Error response ' + response);
+          showToast('Something went wrong in getting your notes');
+        }
+      }, function(err) {
+        $log.error(err);
+        showToast('Something went wrong in getting your notes');
+      });
+    }
 
     /**
      * Function to get the refreshed list after update, add & delete actions on the list.
@@ -164,6 +203,58 @@
           $log.error(err);
           showToast('Something went wrong while deleting your task. Please try again later');
         });
+    }
+
+    /**
+     * Function to add notes for the user
+     * @method: addNotes
+     */
+
+    vm.addNotes = function() {
+      if (vm.note) {
+        $http({
+          method: 'POST',
+          url: host + 'notes/add',
+          data: {
+            note: vm.note,
+            user: user.id
+          }
+        }).then(function(response) {
+          if (response && response.data.success) {
+            showToast('Your notes added successfully');
+            vm.note = '';
+            refreshNotes();
+          } else {
+            $log.error('Error in adding the notes for the user ' + response);
+            showToast('Something went wrong while adding your notes');
+          }
+        }, function(err) {
+          $log.error('Error in adding the notes for the user ' + err);
+          showToast('Something went wrong while adding your notes');
+        })
+      }
+    }
+
+    /**
+     * Function to delete the note for the user
+     * @method: deleteNotes
+     */
+    vm.deleteNotes = function(note) {
+      $http({
+        method: 'DELETE',
+        url: host + 'notes/delete/' + note
+      }).then(function(response) {
+        if (response && response.data.success) {
+          showToast('Your Note deleted');
+          refreshNotes();
+        } else {
+          $log.error('Error in deleting notes ' + response);
+          showToast('Something went wrong while deleting the note');
+        }
+      }, function(err) {
+        $log.error('Error in deleting notes ' + err);
+        showToast('Something went wrong while deleting the note');
+      })
     }
 
     /**

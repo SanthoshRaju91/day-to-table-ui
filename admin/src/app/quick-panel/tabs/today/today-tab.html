@@ -50,11 +50,23 @@
 
 <md-list>
   <md-subheader class="md-no-sticky"><span translate="QUICKPANEL.NOTES">Notes</span></md-subheader>
+  <md-list-item>
+    <div flex="70">
+      <md-input-container class="custom-input-container">
+        <label>Add Notes</label>
+        <input ng-model="vm.note">
+      </md-input-container>
+    </div>
+    <div flex="30">
+      <md-button class="md-fab md-mini" aria-label="add" ng-click="vm.addNotes()">
+        +
+      </md-button>
+    </div>
+  </md-list-item>
   <md-list-item class="md-2-line" ng-repeat="note in vm.notes" ng-click="dummyFunction()">
-    <div class="md-list-item-text">
-      <h3>{{note.title}}</h3>
-
-      <p>{{note.detail}}</p>
+    <div class="md-list-item-text" layout="row">
+      <p flex="70">{{note.notes}}</p>
+      <md-button class="md-fab md-mini md-warn" ng-click="vm.deleteNotes(note._id)"> X </md-button>
     </div>
   </md-list-item>
 </md-list>

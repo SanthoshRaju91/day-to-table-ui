@@ -64,10 +64,12 @@ section {
 .md-whiteframe-1dp {
   .whiteframe-header {
     padding: 16px;
+
     .title {
       font-size: 17px;
     }
   }
+
   .content {
     padding: 16px;
 
@@ -114,7 +116,6 @@ section {
     float: right;
     padding-top: 20px;
     padding-left: 10px;
-
   }
 }
 
@@ -134,46 +135,45 @@ section {
   font-size: 24px !important;
 }
 
-
 .strike {
   text-decoration: line-through;
 }
 
-#mail .sidenav.md-locked-open .header, #mail .sidenav.md-locked-open .header .logo .logo-icon md-icon {
-    color: #FFF;
+#mail .sidenav.md-locked-open .header,
+#mail .sidenav.md-locked-open .header .logo .logo-icon md-icon {
+  color: #FFF;
 }
 
-.page-layout.carded.left-sidenav>.sidenav .header {
-    height: 200px;
-    min-height: 200px;
-    max-height: 200px;
-    padding: 24px;
+.page-layout.carded.left-sidenav > .sidenav .header {
+  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
+  padding: 24px;
 }
 
 #mail .sidenav.md-locked-open .header .logo {
-    padding-top: 27px;
+  padding-top: 27px;
 }
 
 #mail .sidenav .header .logo .logo-icon {
-    margin: 0 16px 0 0;
+  margin: 0 16px 0 0;
 }
 
 #mail .sidenav .header .logo .logo-text {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 #mail .sidenav .header .account {
-    width: 100%;
+  width: 100%;
 }
 
 #mail .sidenav .content {
-    padding: 24px 0;
+  padding: 24px 0;
 }
 
 #mail .sidenav .content .compose-button {
-    padding: 0 24px 24px;
+  padding: 0 24px 24px;
 }
-
 // #layout-vertical-navigation #content-container #content {
 //     position: absolute;
 //     top: 30px;
@@ -183,86 +183,92 @@ section {
 // }
 
 #mail .center .content-card.outlook .content-wrapper .thread-list {
-    background: #FAFAFA;
-    position: relative;
-    padding: 0;
-    border-right: 1px solid rgba(0,0,0,.12);
+  background: #FAFAFA;
+  position: relative;
+  padding: 0;
+  border-right: 1px solid rgba(0,0,0,.12);
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail {
-    background: #FFF;
+  background: #FFF;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-list .thread {
-    background: #FAFAFA;
-    position: relative;
-    padding: 16px;
-    border-bottom: 1px solid rgba(0,0,0,.12);
-    cursor: pointer;
+  background: #FAFAFA;
+  position: relative;
+  padding: 16px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  cursor: pointer;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-list .thread .info {
-    overflow: hidden;
-    width: 0;
-    margin: 0 16px;
+  overflow: hidden;
+  width: 0;
+  margin: 0 16px;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-list .thread .info .name {
-    font-size: 15px;
-    font-weight: 500;
-    padding-bottom: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  padding-bottom: 8px;
 }
 
 .text-truncate {
-    display: block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-#mail .center .content-card.outlook .content-wrapper .thread-list .thread.current-thread, #mail .center .content-card.outlook .content-wrapper .thread-list .thread.current-thread .info .message .labels {
-    background: #E3F2FD;
+#mail .center .content-card.outlook .content-wrapper .thread-list .thread.current-thread,
+#mail .center .content-card.outlook .content-wrapper .thread-list .thread.current-thread .info .message .labels {
+  background: #E3F2FD;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail .thread-header {
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(0,0,0,.12);
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail .thread-content {
-    padding: 24px 0;
+  padding: 24px 0;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail .thread-content .info {
-    padding-bottom: 16px;
+  padding-bottom: 16px;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail .thread-content .info .details {
-    padding-top: 8px;
+  padding-top: 8px;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail .thread-header .subject {
-    font-size: 17px;
-    font-weight: 500;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail .thread-content .info .name {
-    margin-right: 8px;
-    font-weight: 500;
+  margin-right: 8px;
+  font-weight: 500;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail .thread-content .to {
-    color: rgba(0,0,0,.54);
+  color: rgba(0,0,0,.54);
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail .thread-content .info .details .title {
-    font-weight: 500;
-    margin-right: 6px;
+  font-weight: 500;
+  margin-right: 6px;
 }
 
 #mail .center .content-card.outlook .content-wrapper .thread-detail .thread-content .info .details .detail {
-    color: rgba(0,0,0,.54);
+  color: rgba(0,0,0,.54);
 }
 
 #message-container {
   top: 32px;
+}
+
+.custom-input-container {
+  margin-left: 15px;
+  width: 80%;
 }
